@@ -1,0 +1,16 @@
+[
+{
+  "modid": "supertech",
+  "name": "SuperTech",
+  "description": "Bringing amazing technology to your world!",
+  "version": "${version}",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SuperCoder79"],
+  "credits": "SuperCoder79 for the coding, GregoriusT for the textures",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,41 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "supertech:ores/ore_lead",
+    "textures": {
+      "texture": "supertech:blocks/ores/ore_lead"
+    }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "type": {
+      "0": {
+        "textures": {
+          "texture": "supertech:blocks/ores/ore_lead"
+        }
+      },
+      "1": {
+        "textures": {
+          "texture": "supertech:blocks/ores/ore_lead_0"
+        }
+      },
+      "2": {
+        "textures": {
+          "texture": "supertech:blocks/ores/ore_lead_1"
+        }
+      },
+      "3": {
+        "textures": {
+          "texture": "supertech:blocks/ores/ore_lead_2"
+        }
+      },
+      "4": {
+        "textures": {
+          "texture": "supertech:blocks/ores/ore_lead_3"
+        }
+      }
+
+    }
+  }
+}

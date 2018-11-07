@@ -1,0 +1,22 @@
+tile.supertech.computercube.name=SuperTech Computer Cube
+tile.supertech.generator.name=Generator
+tile.supertech.e_furnace.name=Electric Furnace
+
+item.supertech.stcoin.name=SuperTech Coin
+
+item.supertech.dust_iron.name=Iron Dust
+item.supertech.dust_tiny_iron.name=Iron Tiny Dust
+item.supertech.dust_gold.name=Gold Dust
+item.supertech.dust_tiny_gold.name=Gold Tiny Dust
+item.supertech.dust_tiny_redstone.name=Redstone Tiny Dust
+item.supertech.dust_lapis.name=Lapis Dust
+item.supertech.dust_tiny_lapis.name=Lapis Tiny Dust
+item.supertech.dust_diamond.name=Diamond Dust
+item.supertech.dust_tiny_diamond.name=Diamond Tiny Dust
+item.supertech.dust_emerald.name=Emerald Dust
+item.supertech.dust_tiny_emerald.name=Emerald Tiny Dust
+item.supertech.dust_lead.name=Lead Dust
+item.supertech.dust_tiny_lead.name=Lead Tiny Dust
+item.supertech.ingot_lead.name=Lead Ingot
+
+tile.supertech.ore.name=Ore
