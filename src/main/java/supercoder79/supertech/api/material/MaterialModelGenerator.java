@@ -1,8 +1,5 @@
 package supercoder79.supertech.api.material;
 
-import supercoder79.supertech.block.SuperTechBlocks;
-import supercoder79.supertech.block.blocks.Ore;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;

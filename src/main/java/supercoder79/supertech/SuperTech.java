@@ -11,6 +11,8 @@ import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.proxy.CommonProxy;
 
+import java.util.Random;
+
 @Mod(modid = SuperTech.MODID,name = SuperTech.NAME, version = SuperTech.VERSION)
 public class SuperTech {
     public static final String MODID = "supertech";

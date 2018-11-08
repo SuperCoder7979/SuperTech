@@ -11,8 +11,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.Ore;
+import supercoder79.supertech.config.SuperTechConfig;
 
 public class WorldGenMetaState extends WorldGenerator
 {
@@ -56,50 +58,27 @@ public class WorldGenMetaState extends WorldGenerator
             int j1 = MathHelper.floor(d7 + d11 / 2.0D);
             int k1 = MathHelper.floor(d8 + d10 / 2.0D);
 
-            for (int l1 = j; l1 <= i1; ++l1)
-            {
+            for (int l1 = j; l1 <= i1; ++l1) {
                 double d12 = ((double)l1 + 0.5D - d6) / (d10 / 2.0D);
 
-                if (d12 * d12 < 1.0D)
-                {
-                    for (int i2 = k; i2 <= j1; ++i2)
-                    {
+                if (d12 * d12 < 1.0D) {
+                    for (int i2 = k; i2 <= j1; ++i2) {
                         double d13 = ((double)i2 + 0.5D - d7) / (d11 / 2.0D);
 
-                        if (d12 * d12 + d13 * d13 < 1.0D)
-                        {
-                            for (int j2 = l; j2 <= k1; ++j2)
-                            {
+                        if (d12 * d12 + d13 * d13 < 1.0D) {
+                            for (int j2 = l; j2 <= k1; ++j2) {
                                 double d14 = ((double)j2 + 0.5D - d8) / (d10 / 2.0D);
 
-                                if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D)
-                                {
+                                if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D) {
                                     BlockPos blockpos = new BlockPos(l1, i2, j2);
 
                                     IBlockState state = worldIn.getBlockState(blockpos);
                                     if (state.getBlock().isReplaceableOreGen(state, worldIn, blockpos, this.predicate)) {
-//                                        rngsus = new Random();
-//                                        int rng = rngsus.nextInt((100 - 1) + 1) + 1;
-                                        int rng = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+                                        int rng = rngsus.nextInt(100);
                                         int type;
-                                        if (rng <= 40) {
-                                            type = 1;
-                                        } else if (rng > 40 && rng <= 60) {
-                                            type = 2;
-                                        } else if (rng > 60 && rng <= 80) {
-                                            type = 3;
-                                        } else if (rng > 80) {
-                                            type = 4;
-                                        } else {
-                                            type = 0;
-                                            System.out.println("This shouldn't happen!!!");
-                                        }
+                                        if (rng < 40) type = 1; else if (rng < 60) type = 2; else if (rng < 80) type = 3; else type = 4;
 
-//                                        if (this.oreBlock == SuperTechBlocks.leadOre) {
-//                                            System.out.println("Lead: " + type);
-//                                        } else {
-//                                            System.out.println("Ruby: " + type);
-//                                        }
+                                        if(SuperTechConfig.RNGsus_Whisperer) System.out.println("rng: " + rng);
                                         worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, type), 2);
                                     }
                                 }
@@ -113,21 +92,16 @@ public class WorldGenMetaState extends WorldGenerator
         return true;
     }
 
-    static class StonePredicate implements Predicate<IBlockState>
-    {
-        private StonePredicate()
-        {
+    static class StonePredicate implements Predicate<IBlockState> {
+        private StonePredicate() {
         }
 
-        public boolean apply(IBlockState p_apply_1_)
-        {
-            if (p_apply_1_ != null && p_apply_1_.getBlock() == Blocks.STONE)
-            {
+        public boolean apply(IBlockState p_apply_1_) {
+            if (p_apply_1_ != null && p_apply_1_.getBlock() == Blocks.STONE) {
                 BlockStone.EnumType blockstone$enumtype = (BlockStone.EnumType)p_apply_1_.getValue(BlockStone.VARIANT);
                 return blockstone$enumtype.isNatural();
             }
-            else
-            {
+            else {
                 return false;
             }
         }

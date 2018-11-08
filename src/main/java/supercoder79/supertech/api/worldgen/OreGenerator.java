@@ -12,12 +12,14 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import supercoder79.supertech.api.random.ItsNotMyFaultException;
 import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.Ore;
+import supercoder79.supertech.config.SuperTechConfig;
 
 import java.util.Random;
 
 public class OreGenerator implements IWorldGenerator {
     @Override
     public void generate(Random rngsus, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+        if (SuperTechConfig.Generate_Ores)
         switch(world.provider.getDimension()) {
             case -1: //nether
                 break;
@@ -25,7 +27,7 @@ public class OreGenerator implements IWorldGenerator {
                 runGenerator(SuperTechBlocks.leadOre, 8, 4, 12, 60, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.rubyOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.sapphireOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.bauxiteOre, 12, 3, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                runGenerator(SuperTechBlocks.bauxiteOre, 14, 2, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.copperOre, 10, 3, 40, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.copperOre, 6, 2, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 break;

@@ -1,6 +1,7 @@
 package supercoder79.supertech.block;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import supercoder79.supertech.api.loottable.ore.OreLootTable;
 import supercoder79.supertech.block.blocks.ComputerCube;
 import supercoder79.supertech.block.blocks.EFurnace;
 import supercoder79.supertech.block.blocks.Generator;
@@ -25,19 +26,19 @@ public class SuperTechBlocks {
 //    public static Ore ore = new Ore();
 
     @GameRegistry.ObjectHolder("supertech:ore_lead")
-    public static Ore leadOre = new Ore("ore_lead");
+    public static Ore leadOre = new Ore("ore_lead", OreLootTable.leadTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_ruby")
-    public static Ore rubyOre = new Ore("ore_ruby");
+    public static Ore rubyOre = new Ore("ore_ruby", OreLootTable.leadTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_sapphire")
-    public static Ore sapphireOre = new Ore("ore_sapphire");
+    public static Ore sapphireOre = new Ore("ore_sapphire", OreLootTable.leadTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_bauxite")
-    public static Ore bauxiteOre = new Ore("ore_bauxite");
+    public static Ore bauxiteOre = new Ore("ore_bauxite", OreLootTable.leadTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_copper")
-    public static Ore copperOre = new Ore("ore_copper");
+    public static Ore copperOre = new Ore("ore_copper", OreLootTable.leadTable);
 
 
     public static void initModels() {
