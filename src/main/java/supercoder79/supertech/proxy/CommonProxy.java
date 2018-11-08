@@ -50,9 +50,9 @@ public class CommonProxy {
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.generator).setRegistryName(SuperTechBlocks.generator.getRegistryName()));
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.eFurnace).setRegistryName(SuperTechBlocks.eFurnace.getRegistryName()));
         for (Ore o: SuperTechBlocks.ores) {
-//            event.getRegistry().register(new ItemBlock(o).setRegistryName(o.getRegistryName()));
+            event.getRegistry().register(new ItemBlock(o).setRegistryName(o.getRegistryName()));
         }
-        event.getRegistry().register(new ItemBlock(SuperTechBlocks.leadOre).setRegistryName(SuperTechBlocks.leadOre.getRegistryName()));
+//        event.getRegistry().register(new ItemBlock(SuperTechBlocks.leadOre).setRegistryName(SuperTechBlocks.leadOre.getRegistryName()));
 //        event.getRegistry().register(new ItemBlock(SuperTechBlocks.ore).setRegistryName(SuperTechBlocks.ore.getRegistryName()));
 
         event.getRegistry().register(new STCoin());

@@ -2,6 +2,8 @@ package supercoder79.supertech.api.worldgen;
 
 import com.google.common.base.Predicate;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -9,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.Ore;
 
 public class WorldGenMetaState extends WorldGenerator
@@ -75,8 +78,28 @@ public class WorldGenMetaState extends WorldGenerator
 
                                     IBlockState state = worldIn.getBlockState(blockpos);
                                     if (state.getBlock().isReplaceableOreGen(state, worldIn, blockpos, this.predicate)) {
-                                        int type = rngsus.nextInt((4 - 1) + 1) + 1;
-//                                        System.out.println(type);
+//                                        rngsus = new Random();
+//                                        int rng = rngsus.nextInt((100 - 1) + 1) + 1;
+                                        int rng = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+                                        int type;
+                                        if (rng <= 40) {
+                                            type = 1;
+                                        } else if (rng > 40 && rng <= 60) {
+                                            type = 2;
+                                        } else if (rng > 60 && rng <= 80) {
+                                            type = 3;
+                                        } else if (rng > 80) {
+                                            type = 4;
+                                        } else {
+                                            type = 0;
+                                            System.out.println("This shouldn't happen!!!");
+                                        }
+
+//                                        if (this.oreBlock == SuperTechBlocks.leadOre) {
+//                                            System.out.println("Lead: " + type);
+//                                        } else {
+//                                            System.out.println("Ruby: " + type);
+//                                        }
                                         worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, type), 2);
                                     }
                                 }

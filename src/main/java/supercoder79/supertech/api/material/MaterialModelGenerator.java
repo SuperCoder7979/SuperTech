@@ -18,24 +18,48 @@ public class MaterialModelGenerator {
                     "        \"layer0\": \"$NAME$\"\n" +
                     "    }\n" +
                     "}";
-    public static final String BLOCKMODEL_ORE =
-            "{\n" +
-                "  \"parent\": \"block/cube_all\",\n" +
-                "  \"textures\": {\n" +
-                "    \"all\": \"$NAME$\"\n" +
-                "  }\n" +
-                "}";
     public static final String BLOCKSTATE_ORE =
             "{\n" +
-            "  \"forge_marker\": 1,\n" +
-            "  \"defaults\": {\n" +
-            "    \"model\": \"$NAME$\"\n" +
-            "  },\n" +
-            "  \"variants\": {\n" +
-            "    \"normal\": [{}],\n" +
-            "    \"inventory\": [{}]\n" +
-            "  }\n" +
-            "}";
+                    "  \"forge_marker\": 1,\n" +
+                    "  \"defaults\": {\n" +
+                    "    \"model\": \"supertech:ore\",\n" +
+                    "    \"textures\": {\n" +
+                    "      \"texture\": \"$NAME$\"\n" +
+                    "    }\n" +
+                    "  },\n" +
+                    "  \"variants\": {\n" +
+                    "    \"normal\": [{}],\n" +
+                    "    \"inventory\": [{}],\n" +
+                    "    \"type\": {\n" +
+                    "      \"0\": {\n" +
+                    "        \"textures\": {\n" +
+                    "          \"texture\": \"$NAME$\"\n" +
+                    "        }\n" +
+                    "      },\n" +
+                    "      \"1\": {\n" +
+                    "        \"textures\": {\n" +
+                    "          \"texture\": \"$NAME$_0\"\n" +
+                    "        }\n" +
+                    "      },\n" +
+                    "      \"2\": {\n" +
+                    "        \"textures\": {\n" +
+                    "          \"texture\": \"$NAME$_1\"\n" +
+                    "        }\n" +
+                    "      },\n" +
+                    "      \"3\": {\n" +
+                    "        \"textures\": {\n" +
+                    "          \"texture\": \"$NAME$_2\"\n" +
+                    "        }\n" +
+                    "      },\n" +
+                    "      \"4\": {\n" +
+                    "        \"textures\": {\n" +
+                    "          \"texture\": \"$NAME$_3\"\n" +
+                    "        }\n" +
+                    "      }\n" +
+                    "\n" +
+                    "    }\n" +
+                    "  }\n" +
+                    "}";
 
     public static final String TEX_NAME = "supertech:items/materials/";
     public static final String BLOCK_NAME = "supertech:blocks/ores/";
@@ -102,18 +126,15 @@ public class MaterialModelGenerator {
             }
 
         }
-        for (String o: new String[] {"ore_lead"}) {
+        for (String o: new String[] {"ore_lead", "ore_ruby", "ore_sapphire", "ore_bauxite", "ore_copper"}) {
             data = BLOCKSTATE_ORE;
-            data = data.replace("$NAME$", "supertech:" + o);
+            data = data.replace("$NAME$", "supertech:blocks/ores/" + o);
             json = new File(blockstates, o + ".json");
-            Files.write(json.toPath(), Arrays.asList(data.split("\n")));
-            data = BLOCKMODEL_ORE;
-            data = data.replace("$NAME$", BLOCK_NAME + o);
-            json = new File(blockmodels, o + ".json");
+            System.out.println(data);
             Files.write(json.toPath(), Arrays.asList(data.split("\n")));
 
             String[] names = o.split("_");
-            String orename = names[1].substring(0, 1).toUpperCase() + names[1].substring(1) + " Ore";
+            String orename = names[1].substring(0, 1).toUpperCase() + names[1].substring(1) + ".name= Ore";
             locs.add(BLOCK_LOC_NAME + orename);
         }
 

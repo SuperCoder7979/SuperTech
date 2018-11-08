@@ -27,6 +27,19 @@ public class SuperTechBlocks {
     @GameRegistry.ObjectHolder("supertech:ore_lead")
     public static Ore leadOre = new Ore("ore_lead");
 
+    @GameRegistry.ObjectHolder("supertech:ore_ruby")
+    public static Ore rubyOre = new Ore("ore_ruby");
+
+    @GameRegistry.ObjectHolder("supertech:ore_sapphire")
+    public static Ore sapphireOre = new Ore("ore_sapphire");
+
+    @GameRegistry.ObjectHolder("supertech:ore_bauxite")
+    public static Ore bauxiteOre = new Ore("ore_bauxite");
+
+    @GameRegistry.ObjectHolder("supertech:ore_copper")
+    public static Ore copperOre = new Ore("ore_copper");
+
+
     public static void initModels() {
         computerCube.initModel();
         generator.initModel();

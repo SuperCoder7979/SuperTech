@@ -19,4 +19,8 @@ item.supertech.dust_lead.name=Lead Dust
 item.supertech.dust_tiny_lead.name=Lead Tiny Dust
 item.supertech.ingot_lead.name=Lead Ingot
 
-tile.supertech.ore.name=Ore
+tile.supertech.ore_lead.name=Lead Ore
+tile.supertech.ore_ruby.name=Ruby Ore
+tile.supertech.ore_sapphire.name=Sapphire Ore
+tile.supertech.ore_bauxite.name=Bauxite Ore
+tile.supertech.ore_copper.name=Bauxite Ore

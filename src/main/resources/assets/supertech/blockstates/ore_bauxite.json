@@ -3,7 +3,7 @@
   "defaults": {
     "model": "supertech:ore",
     "textures": {
-      "texture": "supertech:blocks/ores/ore_lead"
+      "texture": "supertech:blocks/ores/ore_bauxite"
     }
   },
   "variants": {
@@ -12,27 +12,27 @@
     "type": {
       "0": {
         "textures": {
-          "texture": "supertech:blocks/ores/ore_lead"
+          "texture": "supertech:blocks/ores/ore_bauxite"
         }
       },
       "1": {
         "textures": {
-          "texture": "supertech:blocks/ores/ore_lead_0"
+          "texture": "supertech:blocks/ores/ore_bauxite_0"
         }
       },
       "2": {
         "textures": {
-          "texture": "supertech:blocks/ores/ore_lead_1"
+          "texture": "supertech:blocks/ores/ore_bauxite_1"
         }
       },
       "3": {
         "textures": {
-          "texture": "supertech:blocks/ores/ore_lead_2"
+          "texture": "supertech:blocks/ores/ore_bauxite_2"
         }
       },
       "4": {
         "textures": {
-          "texture": "supertech:blocks/ores/ore_lead_3"
+          "texture": "supertech:blocks/ores/ore_bauxite_3"
         }
       }
 
