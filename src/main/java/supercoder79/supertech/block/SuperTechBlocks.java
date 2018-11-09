@@ -29,16 +29,16 @@ public class SuperTechBlocks {
     public static Ore leadOre = new Ore("ore_lead", OreLootTable.leadTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_ruby")
-    public static Ore rubyOre = new Ore("ore_ruby", OreLootTable.leadTable);
+    public static Ore rubyOre = new Ore("ore_ruby", OreLootTable.rubyTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_sapphire")
-    public static Ore sapphireOre = new Ore("ore_sapphire", OreLootTable.leadTable);
+    public static Ore sapphireOre = new Ore("ore_sapphire", OreLootTable.sapphireTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_bauxite")
-    public static Ore bauxiteOre = new Ore("ore_bauxite", OreLootTable.leadTable);
+    public static Ore bauxiteOre = new Ore("ore_bauxite", OreLootTable.bauxiteTable);
 
     @GameRegistry.ObjectHolder("supertech:ore_copper")
-    public static Ore copperOre = new Ore("ore_copper", OreLootTable.leadTable);
+    public static Ore copperOre = new Ore("ore_copper", OreLootTable.copperTable);
 
 
     public static void initModels() {

@@ -120,9 +120,30 @@ public class MaterialModelGenerator {
                     System.out.println(data);
                     Files.write(json.toPath(), Arrays.asList(data.split("\n")));
                     break;
+                case 5:
+                    data = MATERIALITEM;
+                    data = data.replace("$NAME$", TEX_NAME + "dust_"+mat.getName());
+                    json = new File(materials, "dust_"+mat.getName()+".json");
+                    locs.add(LOC_NAME+"dust_"+mat.getName()+".name=" + mat.getName().substring(0, 1).toUpperCase() + mat.getName().substring(1) + " Dust");
+                    System.out.println(data);
+                    Files.write(json.toPath(), Arrays.asList(data.split("\n")));
+                    data = MATERIALITEM;
+                    data = data.replace("$NAME$", TEX_NAME + "dust_tiny_"+mat.getName());
+                    locs.add(LOC_NAME+"dust_tiny_"+mat.getName()+".name=" + mat.getName().substring(0, 1).toUpperCase() + mat.getName().substring(1) + " Tiny Dust");
+                    json = new File(materials, "dust_tiny_"+mat.getName()+".json");
+                    System.out.println(data);
+                    Files.write(json.toPath(), Arrays.asList(data.split("\n")));
+                    data = MATERIALITEM;
+                    data = data.replace("$NAME$", TEX_NAME + "gem_"+mat.getName());
+                    json = new File(materials, "gem_"+mat.getName()+".json");
+                    locs.add(LOC_NAME+"gem_"+mat.getName()+".name=" + mat.getName().substring(0, 1).toUpperCase() + mat.getName().substring(1));
+                    System.out.println(data);
+                    Files.write(json.toPath(), Arrays.asList(data.split("\n")));
+                    break;
             }
 
         }
+        locs.add("-----");
         for (String o: new String[] {"ore_lead", "ore_ruby", "ore_sapphire", "ore_bauxite", "ore_copper"}) {
             data = BLOCKSTATE_ORE;
             data = data.replace("$NAME$", "supertech:blocks/ores/" + o);
@@ -131,8 +152,8 @@ public class MaterialModelGenerator {
             Files.write(json.toPath(), Arrays.asList(data.split("\n")));
 
             String[] names = o.split("_");
-            String orename = names[1].substring(0, 1).toUpperCase() + names[1].substring(1) + ".name= Ore";
-            locs.add(BLOCK_LOC_NAME + orename);
+            String orename = names[1].substring(0, 1).toUpperCase() + names[1].substring(1) + " Ore";
+            locs.add(BLOCK_LOC_NAME + o + ".name=" + orename);
         }
 
 

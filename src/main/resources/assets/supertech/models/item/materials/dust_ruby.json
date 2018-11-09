@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "supertech:items/materials/dust_ruby"
+    }
+}

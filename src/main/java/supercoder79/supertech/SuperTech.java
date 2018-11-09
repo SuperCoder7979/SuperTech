@@ -15,6 +15,11 @@ import java.util.Random;
 
 @Mod(modid = SuperTech.MODID,name = SuperTech.NAME, version = SuperTech.VERSION)
 public class SuperTech {
+    /**
+     * TODO
+     * Add creative tabs
+     */
+
     public static final String MODID = "supertech";
     public static final String NAME = "SuperTech";
     public static final String VERSION = "0.0.1";

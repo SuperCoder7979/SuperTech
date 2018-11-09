@@ -8,7 +8,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -18,22 +17,23 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import supercoder79.supertech.api.blocks.BasicBlock;
-import supercoder79.supertech.api.loottable.ore.LootTableEntry;
+import supercoder79.supertech.api.loottable.ore.OreLootTableEntry;
 import supercoder79.supertech.block.SuperTechBlocks;
 
 import java.util.Random;
 
 public class Ore extends BasicBlock {
     public static final PropertyInteger TYPE = PropertyInteger.create("type", 0, 4);
-    public LootTableEntry lootTable;
+    public OreLootTableEntry lootTable;
 
     String name;
-    public Ore(String name, LootTableEntry entry) {
+    public Ore(String name, OreLootTableEntry entry) {
         super(Material.ROCK, name);
         setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-        setHardness(10);
-        setResistance(5f);
+        setHardness(3.0F);
+        setResistance(5.0F);
         this.name = name;
+        setHarvestLevel("pickaxe", 2);
         setSoundType(SoundType.STONE);
         lootTable = entry;
         SuperTechBlocks.ores.add(this);
@@ -48,7 +48,7 @@ public class Ore extends BasicBlock {
     @Override
     public IBlockState getStateFromMeta(int meta) {
 //        System.out.println(meta);
-        return this.getDefaultState().withProperty(TYPE, (int)(Math.floor(Math.random()*4)+1));
+        return this.getDefaultState().withProperty(TYPE, (meta));
     }
 
     @Override
@@ -79,9 +79,10 @@ public class Ore extends BasicBlock {
         int type = state.getValue(TYPE);
         int offset = 0;
 
-        if (this.lootTable.gentype == LootTableEntry.GENERATE_SECONDARY) {
+        if (this.lootTable.gentype == OreLootTableEntry.GENERATE_SECONDARY) {
             switch (type) {
                 case 1:
+                    offset = -1;
                     break;
                 case 2:
                 case 3:
@@ -94,6 +95,21 @@ public class Ore extends BasicBlock {
             drops.add(new ItemStack(Item.getItemFromBlock(this),1));
             int amt = rand.nextInt(this.lootTable.maximum+offset) + this.lootTable.minimum+offset;
             if (!(type == 0)) drops.add(this.lootTable.secondaryDrop.getTinyDust(amt));
+        } else {
+            switch (type) {
+                case 1:
+                    break;
+                case 2:
+                case 3:
+                    offset = 1;
+                    break;
+                case 4:
+                    offset = 2;
+                    break;
+            }
+
+            int amt = rand.nextInt(this.lootTable.maximum+offset) + this.lootTable.minimum+offset;
+            drops.add(this.lootTable.secondaryDrop.getGem(amt));
         }
     }
 

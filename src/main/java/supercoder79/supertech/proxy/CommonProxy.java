@@ -38,7 +38,6 @@ public class CommonProxy {
         event.getRegistry().register(new ComputerCube());
         event.getRegistry().register(new Generator());
         event.getRegistry().register(new EFurnace());
-//        event.getRegistry().register(new Ore());
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(o);
         }
@@ -52,13 +51,10 @@ public class CommonProxy {
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(new ItemBlock(o).setRegistryName(o.getRegistryName()));
         }
-//        event.getRegistry().register(new ItemBlock(SuperTechBlocks.leadOre).setRegistryName(SuperTechBlocks.leadOre.getRegistryName()));
-//        event.getRegistry().register(new ItemBlock(SuperTechBlocks.ore).setRegistryName(SuperTechBlocks.ore.getRegistryName()));
 
         event.getRegistry().register(new STCoin());
 
         for (Material material : Materials.materialRegistry) {
-             System.out.println("Attempting registering material: " + material);
             if (material.dust != null) {
                 event.getRegistry().register(material.dust);
             }
@@ -68,6 +64,10 @@ public class CommonProxy {
             if (material.ingot != null) {
                 event.getRegistry().register(material.ingot);
             }
+            if (material.gem != null) {
+                event.getRegistry().register(material.gem);
+            }
         }
+        System.out.println("Registered " + Materials.materialRegistry.size() + " Materials");
     }
 }

@@ -32,6 +32,9 @@ public class ClientProxy extends CommonProxy {
             if (material.ingot != null) {
                 material.ingot.initModel();
             }
+            if (material.gem != null) {
+                material.gem.initModel();
+            }
         }
     }
 }

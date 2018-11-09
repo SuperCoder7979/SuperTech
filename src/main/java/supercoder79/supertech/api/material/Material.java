@@ -24,6 +24,7 @@ public class Material {
     public MaterialItem ingot = null;
     public MaterialItem dust = null;
     public MaterialItem dustTiny = null;
+    public MaterialItem gem = null;
 
     public Material(String name, int flags) {
         this.name = name;
@@ -44,6 +45,10 @@ public class Material {
                 dustTiny = new MaterialItem("dust_tiny_"+this.name);
                 ingot = new MaterialItem("ingot_"+this.name);
                 break;
+            case 5:
+                dust = new MaterialItem("dust_"+this.name);
+                dustTiny = new MaterialItem("dust_tiny_"+this.name);
+                gem = new MaterialItem("gem_"+this.name);
         }
     }
 
@@ -71,6 +76,12 @@ public class Material {
             throw new ItsNotMyFaultException("Attempted to get ingot itemstack from Material " +this.name + " but it does not have flags to create a ingot!");
         }
         return new ItemStack(ingot, amt);
+    }
+    public ItemStack getGem(int amt) {
+        if (flags != 5) {
+            throw new ItsNotMyFaultException("Attempted to get gem itemstack from Material " +this.name + " but it does not have flags to create a gem!");
+        }
+        return new ItemStack(gem, amt);
     }
     public String getName() {
         return name;

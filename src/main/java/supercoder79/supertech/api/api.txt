@@ -1,0 +1,3 @@
+As you see, there is no SuperTechApi.java here. I decided to stray from the gregtech standard here, because the api is cleaner with everything in separate packages.
+You can use/distribute anything you want in here, just make sure you know what the thing that you're copying is doing. Feel free to ask me any questions.
+~ SuperCoder79

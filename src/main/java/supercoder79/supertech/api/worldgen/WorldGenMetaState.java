@@ -2,7 +2,6 @@ package supercoder79.supertech.api.worldgen;
 
 import com.google.common.base.Predicate;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
@@ -11,10 +10,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import supercoder79.supertech.SuperTech;
-import supercoder79.supertech.block.SuperTechBlocks;
+import supercoder79.supertech.api.loottable.ore.OreLootTableEntry;
 import supercoder79.supertech.block.blocks.Ore;
-import supercoder79.supertech.config.SuperTechConfig;
 
 public class WorldGenMetaState extends WorldGenerator
 {
@@ -71,15 +68,38 @@ public class WorldGenMetaState extends WorldGenerator
 
                                 if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D) {
                                     BlockPos blockpos = new BlockPos(l1, i2, j2);
+                                    if (worldIn.isBlockLoaded(blockpos)) {
+                                        IBlockState state = worldIn.getBlockState(blockpos);
+                                        if (state.getBlock().isReplaceableOreGen(state, worldIn, blockpos, this.predicate)) {
+//                                            int rng = rngsus.nextInt(100);
+//                                            int type;
+//                                            if (rng < 40) type = 1;
+//                                            else if (rng < 60) type = 2;
+//                                            else if (rng < 80) type = 3;
+//                                            else type = 4;
 
-                                    IBlockState state = worldIn.getBlockState(blockpos);
-                                    if (state.getBlock().isReplaceableOreGen(state, worldIn, blockpos, this.predicate)) {
-                                        int rng = rngsus.nextInt(100);
-                                        int type;
-                                        if (rng < 40) type = 1; else if (rng < 60) type = 2; else if (rng < 80) type = 3; else type = 4;
+//                                            if (SuperTechConfig.RNGsus_Whisperer) System.out.println("rng: " + rng);
+                                            worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 1), 2);
+                                            if (oreBlock.lootTable.gentype == OreLootTableEntry.GENERATE_SECONDARY) {
+                                                if (rngsus.nextInt(2) == 0) {
+                                                    worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 2), 2);
+                                                    int type = rngsus.nextInt(3);
+                                                    if (type == 0) {
+                                                        worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 3), 2);
 
-                                        if(SuperTechConfig.RNGsus_Whisperer) System.out.println("rng: " + rng);
-                                        worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, type), 2);
+                                                    } else if (type == 1) {
+                                                        worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 4), 2);
+                                                    }
+                                                }
+                                            } else {
+                                                if (rngsus.nextInt(2) == 0) {
+                                                    worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 2), 2);
+                                                    if (rngsus.nextInt(2) == 0) {
+                                                        worldIn.setBlockState(blockpos, this.oreBlock.getDefaultState().withProperty(Ore.TYPE, 4), 2);
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
