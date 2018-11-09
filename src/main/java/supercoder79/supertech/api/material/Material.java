@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import supercoder79.supertech.api.random.ItsNotMyFaultException;
 
 public class Material {
-    String name;
+    public String name;
     /**
      * Flags:
      * 0 - Do nothing
@@ -19,36 +19,41 @@ public class Material {
      *
      * */
 
-    int flags = 0;
+    public int flags;
+
+
+
+    public String formula;
 
     public MaterialItem ingot = null;
     public MaterialItem dust = null;
     public MaterialItem dustTiny = null;
     public MaterialItem gem = null;
 
-    public Material(String name, int flags) {
+    public Material(String name, int flags, String tooltip) {
         this.name = name;
         this.flags = flags;
+        this.formula = tooltip;
         Materials.materialRegistry.add(this);
         switch ( this.flags) {
             case 0:
                 break;
             case 1:
-                dust = new MaterialItem("dust_"+this.name);
-                dustTiny = new MaterialItem("dust_tiny_"+this.name);
+                dust = new MaterialItem("dust_" + this.name, tooltip);
+                dustTiny = new MaterialItem("dust_tiny_" + this.name, tooltip);
                 break;
             case 2:
-                dustTiny = new MaterialItem("dust_tiny_"+this.name);
+                dustTiny = new MaterialItem("dust_tiny_" + this.name, tooltip);
                 break;
             case 3:
-                dust = new MaterialItem("dust_"+this.name);
-                dustTiny = new MaterialItem("dust_tiny_"+this.name);
-                ingot = new MaterialItem("ingot_"+this.name);
+                dust = new MaterialItem("dust_" + this.name, tooltip);
+                dustTiny = new MaterialItem("dust_tiny_" + this.name, tooltip);
+                ingot = new MaterialItem("ingot_" + this.name, tooltip);
                 break;
             case 5:
-                dust = new MaterialItem("dust_"+this.name);
-                dustTiny = new MaterialItem("dust_tiny_"+this.name);
-                gem = new MaterialItem("gem_"+this.name);
+                dust = new MaterialItem("dust_" + this.name, tooltip);
+                dustTiny = new MaterialItem("dust_tiny_" + this.name, tooltip);
+                gem = new MaterialItem("gem_" + this.name, tooltip);
         }
     }
 
@@ -57,28 +62,26 @@ public class Material {
         return " NAME: " + this.name + " GENERATION FLAGS: " + this.flags;
     }
 
-
-    //TODO: add null checks instead of this shit
     public ItemStack getDust(int amt) {
-        if (flags != 1 && flags != 3) {
+        if (dust == null) {
             throw new ItsNotMyFaultException("Attempted to get dust itemstack from Material " +this.name + " but it does not have flags to create a dust!");
         }
         return new ItemStack(dust, amt);
     }
     public ItemStack getTinyDust(int amt) {
-        if (flags == 0) {
+        if (dustTiny == null) {
                 throw new ItsNotMyFaultException("Attempted to get tiny dust itemstack from Material " +this.name + " but it does not have flags to create a tiny dust!");
         }
         return new ItemStack(dustTiny, amt);
     }
     public ItemStack getIngot(int amt) {
-        if (flags >= 3 && flags <= 4) {
+        if (ingot == null) {
             throw new ItsNotMyFaultException("Attempted to get ingot itemstack from Material " +this.name + " but it does not have flags to create a ingot!");
         }
         return new ItemStack(ingot, amt);
     }
     public ItemStack getGem(int amt) {
-        if (flags != 5) {
+        if (gem == null) {
             throw new ItsNotMyFaultException("Attempted to get gem itemstack from Material " +this.name + " but it does not have flags to create a gem!");
         }
         return new ItemStack(gem, amt);
@@ -89,4 +92,8 @@ public class Material {
     public int getFlags() {
         return flags;
     }
+    public String getFormula() {
+        return formula;
+    }
+
 }

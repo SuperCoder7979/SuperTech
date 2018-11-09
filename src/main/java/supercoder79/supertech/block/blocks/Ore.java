@@ -29,7 +29,6 @@ public class Ore extends BasicBlock {
     String name;
     public Ore(String name, OreLootTableEntry entry) {
         super(Material.ROCK, name);
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setHardness(3.0F);
         setResistance(5.0F);
         this.name = name;
@@ -47,7 +46,6 @@ public class Ore extends BasicBlock {
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-//        System.out.println(meta);
         return this.getDefaultState().withProperty(TYPE, (meta));
     }
 
@@ -58,7 +56,6 @@ public class Ore extends BasicBlock {
 
     @Override
     protected BlockStateContainer createBlockState() {
-//        TYPE.
         return new BlockStateContainer(this, TYPE);
     }
 

@@ -18,7 +18,6 @@ import java.util.List;
 public class STCoin extends BasicItem {
     public STCoin() {
         super("stcoin");
-        setCreativeTab(CreativeTabs.MISC);
         setMaxStackSize(64);
     }
 

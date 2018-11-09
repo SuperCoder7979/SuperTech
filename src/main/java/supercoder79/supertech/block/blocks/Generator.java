@@ -16,7 +16,6 @@ public class Generator extends BlockRotatable {
 
     public Generator() {
         super(Material.ROCK, "generator");
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setHardness(30);
         setResistance(5f);
     }

@@ -15,6 +15,7 @@ public class BasicBlock extends Block {
         super(materialIn);
         setRegistryName(name);
         setUnlocalizedName(SuperTech.MODID + "." + name);
+        setCreativeTab(SuperTech.tabMain);
     }
 
     @SideOnly(Side.CLIENT)

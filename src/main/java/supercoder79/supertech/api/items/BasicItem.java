@@ -12,6 +12,7 @@ public class BasicItem extends Item {
         super();
         setRegistryName(name);
         setUnlocalizedName(SuperTech.MODID + "." + name);
+        setCreativeTab(SuperTech.tabMain);
     }
 
     @SideOnly(Side.CLIENT)

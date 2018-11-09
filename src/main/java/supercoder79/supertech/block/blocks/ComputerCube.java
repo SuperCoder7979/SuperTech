@@ -15,7 +15,6 @@ import java.util.List;
 public class ComputerCube extends BasicBlock {
     public ComputerCube() {
         super(Material.ROCK, "computercube");
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         setHardness(30);
         setResistance(5f);
     }

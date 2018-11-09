@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.api.material.Material;
 import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.worldgen.OreGenerator;
@@ -57,17 +58,21 @@ public class CommonProxy {
         for (Material material : Materials.materialRegistry) {
             if (material.dust != null) {
                 event.getRegistry().register(material.dust);
+                material.dust.setCreativeTab(SuperTech.tabMaterials);
             }
             if (material.dustTiny != null) {
                 event.getRegistry().register(material.dustTiny);
+                material.dustTiny.setCreativeTab(SuperTech.tabMaterials);
             }
             if (material.ingot != null) {
                 event.getRegistry().register(material.ingot);
+                material.ingot.setCreativeTab(SuperTech.tabMaterials);
             }
             if (material.gem != null) {
                 event.getRegistry().register(material.gem);
+                material.gem.setCreativeTab(SuperTech.tabMaterials);
             }
         }
-        System.out.println("Registered " + Materials.materialRegistry.size() + " Materials");
+        SuperTech.logger.info("Registered " + Materials.materialRegistry.size() + " Materials");
     }
 }
