@@ -1,0 +1,40 @@
+package supercoder79.supertech.gui.generator;
+
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.util.ResourceLocation;
+import supercoder79.supertech.SuperTech;
+import supercoder79.supertech.api.machine.gui.MachineGUI;
+import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
+
+public class GUIGenerator extends MachineGUI {
+
+    public GUIGenerator(Container container, InventoryPlayer playerInv, TileEntityGenerator tileEntity) {
+        super(container, playerInv, tileEntity,  new ResourceLocation(SuperTech.MODID, "textures/gui/gui_generator.png"), "Generator");
+
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GlStateManager.color(1, 1, 1, 1);
+        mc.getTextureManager().bindTexture(BACKGROUND);
+        int x = (width - xSize) / 2;
+        int y = (height - ySize) / 2;
+
+        drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+
+        int amt = (int)(((double)tile.energy/(double)tile.maxEnergy)*25);
+        if (amt > 25) amt = 25;
+        drawTexturedModalRect(x + 105, y + 54 - amt, 176, 55 - amt, 8, amt);
+
+        TileEntityGenerator generator = (TileEntityGenerator)tile;
+
+        if (generator.burnTime > 0) {
+            drawTexturedModalRect(x + 79, y+ 34, 176, 14, 24, 17);
+            int k = (int)(((double)generator.burnTime/(double)generator.burnTimeTotal)*12);
+            this.drawTexturedModalRect(x + 56, y + 36 + 12 - k, 176, 12 - k, 14, k + 1);
+        }
+
+    }
+}

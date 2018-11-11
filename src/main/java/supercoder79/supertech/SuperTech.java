@@ -1,22 +1,20 @@
 package supercoder79.supertech;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
+import supercoder79.supertech.gui.GUIHandler;
 import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.random.SuperTechCreativeTab;
 import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.proxy.CommonProxy;
 
-import java.util.Random;
-
-@Mod(modid = SuperTech.MODID,name = SuperTech.NAME, version = SuperTech.VERSION)
+@Mod(modid = SuperTech.MODID, name = SuperTech.NAME, version = SuperTech.VERSION)
 public class SuperTech {
     /**
      * TODO
@@ -26,6 +24,9 @@ public class SuperTech {
     public static final String MODID = "supertech";
     public static final String NAME = "SuperTech";
     public static final String VERSION = "0.0.1";
+
+    @Mod.Instance(MODID)
+    public static SuperTech INSTANCE;
 
     public static Logger logger;
     public static SuperTechCreativeTab tabMain = new SuperTechCreativeTab("tabST", Item.getItemFromBlock(SuperTechBlocks.computerCube));
@@ -37,6 +38,7 @@ public class SuperTech {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GUIHandler());
         proxy.preInit(event);
     }
 
