@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "supertech:blocks/machine_side",
+    "down": "supertech:blocks/machine_side",
+    "up": "supertech:blocks/macerator_top",
+    "east": "supertech:blocks/machine_side",
+    "west": "supertech:blocks/machine_side",
+    "north": "supertech:blocks/macerator",
+    "south": "supertech:blocks/machine_side"
+  }
+}

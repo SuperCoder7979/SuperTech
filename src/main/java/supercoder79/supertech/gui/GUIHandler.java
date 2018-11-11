@@ -11,11 +11,15 @@ import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 import supercoder79.supertech.gui.generator.ContainerGenerator;
 import supercoder79.supertech.gui.generator.GUIGenerator;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
+import supercoder79.supertech.gui.macerator.ContainerMacerator;
+import supercoder79.supertech.gui.macerator.GUIMacerator;
+import supercoder79.supertech.gui.macerator.TileEntityMacerator;
 
 import javax.annotation.Nullable;
 
 public class GUIHandler implements IGuiHandler {
     public static final int GENERATOR = 0;
+    public static final int MACERATOR = 1;
 
     @Nullable
     @Override
@@ -24,6 +28,8 @@ public class GUIHandler implements IGuiHandler {
         switch (ID) {
             case GENERATOR:
                 return new ContainerGenerator(player.inventory, (TileEntityGenerator) world.getTileEntity(new BlockPos(x, y, z)));
+            case MACERATOR:
+                return new ContainerMacerator(player.inventory, (TileEntityMacerator) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -35,6 +41,8 @@ public class GUIHandler implements IGuiHandler {
         switch (ID) {
             case GENERATOR:
                 return new GUIGenerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityGenerator) world.getTileEntity(new BlockPos(x, y, z)));
+            case MACERATOR:
+                return new GUIMacerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityMacerator) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }

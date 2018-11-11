@@ -7,16 +7,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
+import supercoder79.supertech.api.enet.IEnergyMachine;
 
-public class TileEntityMachine extends TileEntity implements IInventory {
+public class TileEntityMachine extends TileEntity implements IInventory, IEnergyMachine {
     public int energy = 0;
+    public int maxEnergy = 4000;
     public String name = "SuperTech Machine";
     public NonNullList<ItemStack> machineItemStacks;
     //TODO: Make this usable for all machines
 
-    public TileEntityMachine(int size, String name) {
+    public TileEntityMachine(int size, String name, int maxEnergy) {
          machineItemStacks = NonNullList.<ItemStack>withSize(size, ItemStack.EMPTY);
          this.name = name;
+         this.maxEnergy = maxEnergy;
     }
 
     @Override
@@ -125,5 +128,16 @@ public class TileEntityMachine extends TileEntity implements IInventory {
     @Override
     public boolean hasCustomName() {
         return false;
+    }
+
+    @Override
+    public int extractEnergy(TileEntityMachine machine, int amt) {
+        if (machine.energy >= amt) {
+            if (this.energy + amt <= this.maxEnergy) {
+                machine.energy-=amt;
+                return amt;
+            }
+        }
+        return 0;
     }
 }

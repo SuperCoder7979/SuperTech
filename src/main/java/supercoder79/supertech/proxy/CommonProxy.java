@@ -12,16 +12,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import supercoder79.supertech.SuperTech;
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 import supercoder79.supertech.api.material.Material;
 import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.worldgen.OreGenerator;
 import supercoder79.supertech.block.SuperTechBlocks;
-import supercoder79.supertech.block.blocks.ComputerCube;
-import supercoder79.supertech.block.blocks.EFurnace;
-import supercoder79.supertech.block.blocks.Generator;
-import supercoder79.supertech.block.blocks.Ore;
+import supercoder79.supertech.block.blocks.*;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
+import supercoder79.supertech.gui.macerator.TileEntityMacerator;
 import supercoder79.supertech.item.items.STCoin;
 
 @Mod.EventBusSubscriber
@@ -34,6 +31,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
         GameRegistry.registerTileEntity(TileEntityGenerator.class, new ModelResourceLocation(SuperTech.MODID + ":tegenerator"));
+        GameRegistry.registerTileEntity(TileEntityMacerator.class, new ModelResourceLocation(SuperTech.MODID + ":temacerator"));
     }
 
     public void postInit(FMLPostInitializationEvent event) {
@@ -44,6 +42,7 @@ public class CommonProxy {
         event.getRegistry().register(new ComputerCube());
         event.getRegistry().register(new Generator());
         event.getRegistry().register(new EFurnace());
+        event.getRegistry().register(new Macerator());
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(o);
         }
@@ -53,8 +52,8 @@ public class CommonProxy {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.computerCube).setRegistryName(SuperTechBlocks.computerCube.getRegistryName()));
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.generator).setRegistryName(SuperTechBlocks.generator.getRegistryName()));
-
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.eFurnace).setRegistryName(SuperTechBlocks.eFurnace.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(SuperTechBlocks.macerator).setRegistryName(SuperTechBlocks.macerator.getRegistryName()));
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(new ItemBlock(o).setRegistryName(o.getRegistryName()));
         }

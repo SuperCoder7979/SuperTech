@@ -16,7 +16,7 @@ public class EFurnace extends BlockRotatable {
 
     public EFurnace() {
         super(Material.ROCK, "e_furnace");
-        setHardness(30);
+        setHardness(5);
         setResistance(5f);
     }
 

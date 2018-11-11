@@ -1,6 +1,7 @@
 tile.supertech.computercube.name=SuperTech Computer Cube
 tile.supertech.generator.name=Generator
 tile.supertech.e_furnace.name=Electric Furnace
+tile.supertech.macerator.name=Macerator
 
 item.supertech.stcoin.name=SuperTech Coin
 

@@ -10,10 +10,9 @@ public class TileEntityGenerator extends TileEntityMachine implements ITickable 
     public int burnTime;
     public int burnTimeTotal;
     public boolean isBurning;
-    public int maxEnergy = 4000;
 
     public TileEntityGenerator() {
-        super(1, "Generator");
+        super(1, "Generator", 4000);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class TileEntityGenerator extends TileEntityMachine implements ITickable 
         if (!this.world.isRemote) {
             if (this.isBurning) {
                 this.burnTime--;
-                this.energy+=4;
+                this.energy+=8;
                 this.isBurning = true;
                 if (this.burnTime <= 0) {
                     this.isBurning = false;
@@ -51,11 +50,8 @@ public class TileEntityGenerator extends TileEntityMachine implements ITickable 
                         this.burnTimeTotal = TileEntityFurnace.getItemBurnTime(this.machineItemStacks.get(0))/2;
                         this.burnTime = TileEntityFurnace.getItemBurnTime(this.machineItemStacks.get(0))/2;
                         this.isBurning = true;
-//                        if (!this.world.isRemote) {
                             decrStackSize(0, 1);
-                            System.out.println("started burning 1: " + this.burnTime + " 2: " + this.burnTimeTotal);
                             markDirty();
-//                        }
                     }
                 }
             }
@@ -67,7 +63,6 @@ public class TileEntityGenerator extends TileEntityMachine implements ITickable 
 
     @Override
     public void setField(int id, int value) {
-//        super.setField(id, value);
         switch (id) {
             case 0:
                 this.energy = value;
