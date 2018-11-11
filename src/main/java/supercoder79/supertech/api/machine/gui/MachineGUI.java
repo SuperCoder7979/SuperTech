@@ -33,11 +33,6 @@ public class MachineGUI extends GuiContainer {
         int y = (height - ySize) / 2;
 
         drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-
-        int amt = (int)(((double)tile.energy/(double)tile.maxEnergy)*25);
-        if (amt > 25) amt = 25;
-        //TODO: Make the bad go from bottom to top
-        drawTexturedModalRect(x + 105, y + 54 - amt, 176, 55 - amt, 8, amt);
         }
 
     @Override

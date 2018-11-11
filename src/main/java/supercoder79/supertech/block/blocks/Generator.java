@@ -22,7 +22,7 @@ import supercoder79.supertech.gui.generator.TileEntityGenerator;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class Generator extends BlockRotatable implements ITileEntityProvider {
+public class Generator extends BlockRotatable {
 
     public Generator() {
         super(Material.ROCK, "generator");
@@ -36,11 +36,15 @@ public class Generator extends BlockRotatable implements ITileEntityProvider {
         tooltip.add("Stick some coal in and get some power out! Somehow....");
     }
 
-
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
+    public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileEntityGenerator();
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
     }
 
     @Override

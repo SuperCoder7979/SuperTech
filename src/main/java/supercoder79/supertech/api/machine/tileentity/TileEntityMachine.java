@@ -10,7 +10,6 @@ import net.minecraft.util.NonNullList;
 
 public class TileEntityMachine extends TileEntity implements IInventory {
     public int energy = 0;
-    public int maxEnergy = 800;
     public String name = "SuperTech Machine";
     public NonNullList<ItemStack> machineItemStacks;
     //TODO: Make this usable for all machines
@@ -24,6 +23,7 @@ public class TileEntityMachine extends TileEntity implements IInventory {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         compound.setInteger("energy", energy);
+        ItemStackHelper.saveAllItems(compound, this.machineItemStacks);
         return compound;
     }
 
@@ -31,6 +31,7 @@ public class TileEntityMachine extends TileEntity implements IInventory {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         energy = compound.getInteger("energy");
+        ItemStackHelper.loadAllItems(compound, this.machineItemStacks);
     }
 
     @Override
@@ -55,11 +56,13 @@ public class TileEntityMachine extends TileEntity implements IInventory {
 
     @Override
     public ItemStack decrStackSize(int index, int count) {
+        this.markDirty();
         return ItemStackHelper.getAndSplit(this.machineItemStacks, index, count);
     }
 
     @Override
     public ItemStack removeStackFromSlot(int index) {
+        this.markDirty();
         return ItemStackHelper.getAndRemove(this.machineItemStacks, index);
     }
 

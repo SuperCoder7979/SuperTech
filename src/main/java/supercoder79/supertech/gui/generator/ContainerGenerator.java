@@ -3,10 +3,7 @@ package supercoder79.supertech.gui.generator;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import supercoder79.supertech.api.machine.conainer.MachineContainer;
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 
 public class ContainerGenerator extends MachineContainer {
     public TileEntityGenerator te;
@@ -17,10 +14,6 @@ public class ContainerGenerator extends MachineContainer {
             @Override
             public void onSlotChanged() {
                 tileentity.markDirty();
-//                tileentity.energy++;
-                System.out.println(tileentity.energy);
-                System.out.println(tileentity.maxEnergy);
-                System.out.println("amt: " + (int)(((double)tileentity.energy/(double)tileentity.maxEnergy)*25));
             }
         });
     }
@@ -35,8 +28,5 @@ public class ContainerGenerator extends MachineContainer {
             listener.sendWindowProperty(this, 2, te.getField(2));
         }
     }
-    @SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data) {
-        this.te.setField(id, data);
-    }
+
 }
