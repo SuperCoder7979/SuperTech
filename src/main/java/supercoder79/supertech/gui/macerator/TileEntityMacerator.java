@@ -57,12 +57,12 @@ public class TileEntityMacerator extends TileEntityMachine implements ITickable 
                 Item item = getStackInSlot(0).getItem();
                 NonNullList<ItemStack> stacks = RecipeList.maceratorRecipes.get(item);
                 if (stacks != null) {
-                    if ((getStackInSlot(1).getItem() == stacks.get(1).getItem() && getStackInSlot(2).getItem() == stacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
-                        if (getStackInSlot(1).getCount() <= (getStackInSlot(1).getMaxStackSize() + stacks.get(1).getCount()) && getStackInSlot(2).getCount() <= (getStackInSlot(2).getMaxStackSize() + stacks.get(2).getCount())) {
-                            progress = 200;
-                            maxProgress = 200;
-                            recipeStacks = stacks;
-                            decrStackSize(0, stacks.get(0).getCount());
+                    recipeStacks = stacks;
+                    if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
+                        if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize()) {
+                            progress = 50;
+                            maxProgress = 50;
+                            decrStackSize(0, recipeStacks.get(0).getCount());
                             markDirty();
                         }
                     }
