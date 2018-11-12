@@ -2,6 +2,7 @@ package supercoder79.supertech.api.material;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import supercoder79.supertech.api.random.ItsNotMyFaultException;
 
 public class Material {

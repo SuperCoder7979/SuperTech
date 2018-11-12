@@ -20,6 +20,10 @@ import supercoder79.supertech.block.blocks.*;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
 import supercoder79.supertech.gui.macerator.TileEntityMacerator;
 import supercoder79.supertech.item.items.STCoin;
+import supercoder79.supertech.loaders.CraftingRecipeLoader;
+import supercoder79.supertech.loaders.ModRecipeLoader;
+import supercoder79.supertech.loaders.OreDictLoader;
+import supercoder79.supertech.loaders.SmeltingRecipeLoader;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -32,6 +36,10 @@ public class CommonProxy {
         GameRegistry.registerWorldGenerator(new OreGenerator(), 0);
         GameRegistry.registerTileEntity(TileEntityGenerator.class, new ModelResourceLocation(SuperTech.MODID + ":tegenerator"));
         GameRegistry.registerTileEntity(TileEntityMacerator.class, new ModelResourceLocation(SuperTech.MODID + ":temacerator"));
+        OreDictLoader.run();
+        CraftingRecipeLoader.run();
+        SmeltingRecipeLoader.run();
+        ModRecipeLoader.run();
     }
 
     public void postInit(FMLPostInitializationEvent event) {

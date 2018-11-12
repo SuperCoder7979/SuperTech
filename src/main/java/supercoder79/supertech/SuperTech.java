@@ -30,7 +30,7 @@ public class SuperTech {
 
     public static Logger logger;
     public static SuperTechCreativeTab tabMain = new SuperTechCreativeTab("tabST", Item.getItemFromBlock(SuperTechBlocks.computerCube));
-    public static SuperTechCreativeTab tabMaterials = new SuperTechCreativeTab("tabSTMaterials", Materials.Copper.ingot);
+    public static SuperTechCreativeTab tabMaterials = new SuperTechCreativeTab("tabSTMaterials", Materials.Gold.dust);
 
     @SidedProxy(clientSide = "supercoder79.supertech.proxy.ClientProxy", serverSide = "supercoder79.supertech.proxy.CommonProxy")
     public static CommonProxy proxy;
