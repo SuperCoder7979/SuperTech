@@ -18,7 +18,7 @@ import supercoder79.supertech.gui.generator.TileEntityGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileEntityMacerator extends TileEntityMachine implements ITickable {
+public class TileEntityMacerator extends TileEntityMachine {
     public int progress = 0;
     public int maxProgress = 0;
     public TileEntityGenerator generator = null;
@@ -48,6 +48,7 @@ public class TileEntityMacerator extends TileEntityMachine implements ITickable 
 
     @Override
     public void update() {
+        super.update();
         if (!this.world.isRemote) {
             if (this.generator != null) {
                 this.energy += extractEnergy(generator, 32);
@@ -60,8 +61,8 @@ public class TileEntityMacerator extends TileEntityMachine implements ITickable 
                     recipeStacks = stacks;
                     if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
                         if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize()) {
-                            progress = 50;
-                            maxProgress = 50;
+                            progress = 100;
+                            maxProgress = 100;
                             decrStackSize(0, recipeStacks.get(0).getCount());
                             markDirty();
                         }

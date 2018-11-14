@@ -1,15 +1,20 @@
 package supercoder79.supertech.api.machine.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
+import supercoder79.supertech.api.config.SuperTechConfig;
 import supercoder79.supertech.api.enet.IEnergyMachine;
+import supercoder79.supertech.api.random.ScrewupManager;
 
-public class TileEntityMachine extends TileEntity implements IInventory, IEnergyMachine {
+public class TileEntityMachine extends TileEntity implements IInventory, ITickable, IEnergyMachine {
     public int energy = 0;
     public int maxEnergy = 4000;
     public String name = "SuperTech Machine";
@@ -35,6 +40,27 @@ public class TileEntityMachine extends TileEntity implements IInventory, IEnergy
         super.readFromNBT(compound);
         energy = compound.getInteger("energy");
         ItemStackHelper.loadAllItems(compound, this.machineItemStacks);
+    }
+
+    @Override
+    public void update() {
+        if (this.world.getWorldTime() % 600 == 0) {
+            boolean isOpenToSky = true;
+            BlockPos pos = this.pos;
+            for (int i = 1; i < 256 - pos.getY(); i++) {
+                BlockPos up = pos.up(i);
+                if (this.world.getBlockState(up).getBlock() != Blocks.AIR) {
+                    isOpenToSky = false;
+                }
+            }
+            if (isOpenToSky) {
+                if (world.isRaining()) {
+                    if (SuperTechConfig.Rain_Explodes_Machines) {
+                        ScrewupManager.blowUpMachine(this.world, this.pos, 4);
+                    }
+                }
+            }
+        }
     }
 
     @Override

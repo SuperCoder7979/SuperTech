@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import supercoder79.supertech.api.random.ItsNotMyFaultException;
 import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.Ore;
-import supercoder79.supertech.config.SuperTechConfig;
+import supercoder79.supertech.api.config.SuperTechConfig;
 
 import java.util.Random;
 

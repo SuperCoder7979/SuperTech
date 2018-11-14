@@ -5,7 +5,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ITickable;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 
-public class TileEntityGenerator extends TileEntityMachine implements ITickable {
+public class TileEntityGenerator extends TileEntityMachine {
 
     public int burnTime;
     public int burnTimeTotal;
@@ -34,6 +34,7 @@ public class TileEntityGenerator extends TileEntityMachine implements ITickable 
 
     @Override
     public void update() {
+        super.update();
         //TODO: optimize this somehow
         if (!this.world.isRemote) {
             if (this.isBurning) {

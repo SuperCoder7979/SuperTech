@@ -27,7 +27,7 @@ public class Generator extends BlockRotatable {
     public Generator() {
         super(Material.ROCK, "generator");
         setHardness(5);
-        setResistance(5f);
+        setResistance(3f);
     }
 
     @Override

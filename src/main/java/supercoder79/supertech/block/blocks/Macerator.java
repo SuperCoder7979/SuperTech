@@ -24,6 +24,8 @@ import java.util.List;
 public class Macerator extends BlockRotatable {
     public Macerator() {
         super(Material.IRON, "macerator");
+        setHardness(5);
+        setResistance(3f);
     }
     @Override
     @SideOnly(Side.CLIENT)

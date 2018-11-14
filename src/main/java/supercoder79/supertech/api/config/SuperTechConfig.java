@@ -1,4 +1,4 @@
-package supercoder79.supertech.config;
+package supercoder79.supertech.api.config;
 
 import net.minecraftforge.common.config.Config;
 import supercoder79.supertech.SuperTech;
@@ -13,4 +13,7 @@ public class SuperTechConfig {
 
     @Config.Comment("Makes the world generator generate only one of each ore texture")
     public static boolean Disable_Mixed_Ores = false;
+
+    @Config.Comment("Enable rain compatibility")
+    public static boolean Rain_Explodes_Machines = true;
 }
