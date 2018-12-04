@@ -1,5 +1,7 @@
 package supercoder79.supertech.api.material;
 
+import net.minecraft.item.ItemStack;
+
 import java.util.ArrayList;
 
 public class Materials {
@@ -29,4 +31,9 @@ public class Materials {
     public static Material Tetrahedrite = new Material("tetrahedrite", GEN_DUST, "");
     public static Material Ruby = new Material("ruby", GEN_GEM, "");
     public static Material Sapphire = new Material("sapphire", GEN_GEM, "");
+
+    static {
+        Lead.setSmelting(Lead.getDust(1), Lead.getIngot(1));
+        Copper.setSmelting(Copper.getDust(1), Copper.getIngot(1));
+    }
 }

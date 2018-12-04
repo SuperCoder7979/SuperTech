@@ -6,6 +6,7 @@ import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
@@ -14,28 +15,45 @@ import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.Ore;
 import supercoder79.supertech.api.config.SuperTechConfig;
 
+import java.lang.reflect.Field;
 import java.util.Random;
 
 public class OreGenerator implements IWorldGenerator {
     @Override
     public void generate(Random rngsus, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (SuperTechConfig.Generate_Ores)
-        switch(world.provider.getDimension()) {
-            case -1: //nether
-                break;
-            case 0: //overworld
+        if (SuperTechConfig.Generate_Ores) {
+            switch(world.provider.getDimension()) {
+                case -1: //nether
+                    break;
+                case 0: //overworld
+                    runGenerator(SuperTechBlocks.leadOre, 8, 4, 12, 60, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.rubyOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.sapphireOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.bauxiteOre, 14, 2, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.copperOre, 10, 3, 40, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.copperOre, 6, 2, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    break;
+                case 1: //end
+                    break;
+                default: //other dims
+                    break;
+            }
+        }
+        try {
+            Class e99dimension = Class.forName("gtclassic.GTDimensions");
+            Field dimensionType = e99dimension.getDeclaredField("toxicDimensionType");
+            if (world.provider == (WorldProvider)dimensionType.get(null)) {
                 runGenerator(SuperTechBlocks.leadOre, 8, 4, 12, 60, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.rubyOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.sapphireOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.bauxiteOre, 14, 2, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.copperOre, 10, 3, 40, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                 runGenerator(SuperTechBlocks.copperOre, 6, 2, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                break;
-            case 1: //end
-                break;
-            default: //other dims
-                break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     private void runGenerator(Ore ore, int blockAmount, int chancesToSpawn, int minHeight, int maxHeight, Predicate<IBlockState> blockToReplace, World world, Random rngsus, int chunk_X, int chunk_Z){

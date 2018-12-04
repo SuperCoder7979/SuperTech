@@ -19,6 +19,7 @@ import supercoder79.supertech.block.SuperTechBlocks;
 import supercoder79.supertech.block.blocks.*;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
 import supercoder79.supertech.gui.macerator.TileEntityMacerator;
+import supercoder79.supertech.item.items.DebugScissors;
 import supercoder79.supertech.item.items.STCoin;
 import supercoder79.supertech.loaders.CraftingRecipeLoader;
 import supercoder79.supertech.loaders.ModRecipeLoader;
@@ -67,6 +68,7 @@ public class CommonProxy {
         }
 
         event.getRegistry().register(new STCoin());
+        event.getRegistry().register(new DebugScissors());
 
         for (Material material : Materials.materialRegistry) {
             if (material.dust != null) {

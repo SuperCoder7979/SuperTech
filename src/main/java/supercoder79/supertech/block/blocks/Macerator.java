@@ -17,6 +17,7 @@ import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.api.blocks.BlockRotatable;
 import supercoder79.supertech.gui.GUIHandler;
 import supercoder79.supertech.gui.macerator.TileEntityMacerator;
+import supercoder79.supertech.item.SuperTechItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -56,7 +57,7 @@ public class Macerator extends BlockRotatable {
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            if (!player.isSneaking()) {
+            if (!player.isSneaking() && !(player.getHeldItemMainhand().getItem() == SuperTechItems.debugScissors)) {
                 player.openGui(SuperTech.INSTANCE, GUIHandler.MACERATOR, world, pos.getX(), pos.getY(), pos.getZ());
             }
         }

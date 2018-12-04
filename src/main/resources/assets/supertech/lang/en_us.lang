@@ -4,6 +4,7 @@ tile.supertech.e_furnace.name=Electric Furnace
 tile.supertech.macerator.name=Macerator
 
 item.supertech.stcoin.name=SuperTech Coin
+item.supertech.debug_scissors.name=Debug Scissors
 
 item.supertech.dust_iron.name=Iron Dust
 item.supertech.dust_tiny_iron.name=Iron Tiny Dust

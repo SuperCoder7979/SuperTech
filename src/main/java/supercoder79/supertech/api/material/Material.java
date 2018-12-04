@@ -1,5 +1,6 @@
 package supercoder79.supertech.api.material;
 
+import javafx.util.Pair;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -21,10 +22,9 @@ public class Material {
      * */
 
     public int flags;
-
-
-
     public String formula;
+
+    public Pair<ItemStack, ItemStack> smelting;
 
     public MaterialItem ingot = null;
     public MaterialItem dust = null;
@@ -56,6 +56,13 @@ public class Material {
                 dustTiny = new MaterialItem("dust_tiny_" + this.name, tooltip);
                 gem = new MaterialItem("gem_" + this.name, tooltip);
         }
+    }
+
+    public void setSmelting(ItemStack stackIn, ItemStack stackOut) {
+        this.smelting = new Pair<>(stackIn, stackOut);
+    }
+    public Pair<ItemStack, ItemStack> getSmelting() {
+        return smelting;
     }
 
     @Override
