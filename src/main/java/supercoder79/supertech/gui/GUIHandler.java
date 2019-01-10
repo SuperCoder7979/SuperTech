@@ -8,6 +8,9 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import supercoder79.supertech.api.machine.conainer.MachineContainer;
 import supercoder79.supertech.api.machine.gui.MachineGUI;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
+import supercoder79.supertech.gui.electrolyzer.ContainerElectrolyzer;
+import supercoder79.supertech.gui.electrolyzer.GUIElectrolyzer;
+import supercoder79.supertech.gui.electrolyzer.TileEntityElectrolyzer;
 import supercoder79.supertech.gui.generator.ContainerGenerator;
 import supercoder79.supertech.gui.generator.GUIGenerator;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
@@ -20,6 +23,7 @@ import javax.annotation.Nullable;
 public class GUIHandler implements IGuiHandler {
     public static final int GENERATOR = 0;
     public static final int MACERATOR = 1;
+    public static final int ELECTROLYZER = 2;
 
     @Nullable
     @Override
@@ -30,6 +34,8 @@ public class GUIHandler implements IGuiHandler {
                 return new ContainerGenerator(player.inventory, (TileEntityGenerator) world.getTileEntity(new BlockPos(x, y, z)));
             case MACERATOR:
                 return new ContainerMacerator(player.inventory, (TileEntityMacerator) world.getTileEntity(new BlockPos(x, y, z)));
+            case ELECTROLYZER:
+                return new ContainerElectrolyzer(player.inventory, (TileEntityElectrolyzer) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }
@@ -43,6 +49,8 @@ public class GUIHandler implements IGuiHandler {
                 return new GUIGenerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityGenerator) world.getTileEntity(new BlockPos(x, y, z)));
             case MACERATOR:
                 return new GUIMacerator(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityMacerator) world.getTileEntity(new BlockPos(x, y, z)));
+            case ELECTROLYZER:
+                return new GUIElectrolyzer(getServerGuiElement(ID, player, world, x, y, z), player.inventory, (TileEntityElectrolyzer) world.getTileEntity(new BlockPos(x, y, z)));
             default:
                 return null;
         }

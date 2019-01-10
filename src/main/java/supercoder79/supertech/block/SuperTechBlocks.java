@@ -3,6 +3,10 @@ package supercoder79.supertech.block;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import supercoder79.supertech.api.loottable.ore.OreLootTable;
 import supercoder79.supertech.block.blocks.*;
+import supercoder79.supertech.block.blocks.basicmachines.EFurnace;
+import supercoder79.supertech.block.blocks.basicmachines.Electrolyzer;
+import supercoder79.supertech.block.blocks.basicmachines.Generator;
+import supercoder79.supertech.block.blocks.basicmachines.Macerator;
 
 import java.util.ArrayList;
 
@@ -21,6 +25,9 @@ public class SuperTechBlocks {
 
     @GameRegistry.ObjectHolder("supertech:macerator")
     public static Macerator macerator = new Macerator();
+
+    @GameRegistry.ObjectHolder("supertech:electrolyzer")
+    public static Electrolyzer electrolyzer = new Electrolyzer();
 
     @GameRegistry.ObjectHolder("supertech:ore_lead")
     public static Ore leadOre = new Ore("ore_lead", OreLootTable.leadTable);
@@ -43,6 +50,7 @@ public class SuperTechBlocks {
         generator.initModel();
         eFurnace.initModel();
         macerator.initModel();
+        electrolyzer.initModel();
 //        ore.initModel();
         for (Ore o: ores) {
             o.initModel();

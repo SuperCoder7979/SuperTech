@@ -1,4 +1,4 @@
-package supercoder79.supertech.block.blocks;
+package supercoder79.supertech.block.blocks.basicmachines;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;

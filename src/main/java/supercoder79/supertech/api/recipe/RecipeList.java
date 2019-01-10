@@ -12,6 +12,7 @@ import java.util.Map;
 public class RecipeList {
 
     public static Map<Item, NonNullList<ItemStack>> maceratorRecipes = new HashMap<>();
+    public static Map<Item, NonNullList<ItemStack>> electrolyzerRecipes = new HashMap<>();
     public static void addMaceratorRecipe(Item item, ItemStack input, ItemStack output, ItemStack byproduct) {
         NonNullList<ItemStack> stacks = NonNullList.create();
         stacks.add(input);

@@ -13,6 +13,7 @@ import supercoder79.supertech.block.SuperTechBlocks;
 
 public class CraftingRecipeLoader {
     public static void run() {
+        //temporary recipes
         GameRegistry.addShapedRecipe(new ResourceLocation(SuperTech.MODID + ":generator_recipe"), null, new ItemStack(SuperTechBlocks.generator, 1), "IRI", "IFI", "IRI",
                 'I', new ItemStack(Items.IRON_INGOT),
                 'R', new ItemStack(Items.REDSTONE),

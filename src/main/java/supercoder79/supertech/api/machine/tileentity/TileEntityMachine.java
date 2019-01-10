@@ -22,7 +22,7 @@ public class TileEntityMachine extends TileEntity implements IInventory, ITickab
     //TODO: Make this usable for all machines
 
     public TileEntityMachine(int size, String name, int maxEnergy) {
-         machineItemStacks = NonNullList.<ItemStack>withSize(size, ItemStack.EMPTY);
+         machineItemStacks = NonNullList.withSize(size, ItemStack.EMPTY);
          this.name = name;
          this.maxEnergy = maxEnergy;
     }

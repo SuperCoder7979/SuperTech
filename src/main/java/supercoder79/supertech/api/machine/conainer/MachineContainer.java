@@ -10,7 +10,7 @@ import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 
 public class MachineContainer extends Container {
     protected TileEntityMachine tileEntityMachine;
-    public MachineContainer(InventoryPlayer playerInv, final TileEntityMachine tileentity) {
+    public MachineContainer(InventoryPlayer playerInv, TileEntityMachine tileentity) {
         tileEntityMachine = tileentity;
         addInventorySlots(playerInv);
     }

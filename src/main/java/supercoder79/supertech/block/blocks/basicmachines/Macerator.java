@@ -1,4 +1,4 @@
-package supercoder79.supertech.block.blocks;
+package supercoder79.supertech.block.blocks.basicmachines;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -59,6 +60,12 @@ public class Macerator extends BlockRotatable {
         if (!world.isRemote) {
             if (!player.isSneaking() && !(player.getHeldItemMainhand().getItem() == SuperTechItems.debugScissors)) {
                 player.openGui(SuperTech.INSTANCE, GUIHandler.MACERATOR, world, pos.getX(), pos.getY(), pos.getZ());
+            }
+            if (player.getHeldItemMainhand().getItem() == SuperTechItems.debugScissors) {
+                if (world.getTileEntity(pos) instanceof TileEntityMacerator) {
+                    player.sendStatusMessage(new TextComponentString("Energy: " + ((TileEntityMacerator)world.getTileEntity(pos)).energy), false);
+                    player.sendStatusMessage(new TextComponentString("Progress: " + ((TileEntityMacerator)world.getTileEntity(pos)).progress), false);
+                }
             }
         }
         return true;
