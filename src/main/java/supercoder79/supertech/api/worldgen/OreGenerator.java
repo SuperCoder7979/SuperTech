@@ -27,8 +27,8 @@ public class OreGenerator implements IWorldGenerator {
                     break;
                 case 0: //overworld
                     runGenerator(SuperTechBlocks.leadOre, 8, 4, 12, 60, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                    runGenerator(SuperTechBlocks.rubyOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                    runGenerator(SuperTechBlocks.sapphireOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.rubyOre, 4, 2, 0, 30, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
+                    runGenerator(SuperTechBlocks.sapphireOre, 4, 2, 0, 30, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                     runGenerator(SuperTechBlocks.bauxiteOre, 14, 2, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                     runGenerator(SuperTechBlocks.copperOre, 10, 3, 40, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
                     runGenerator(SuperTechBlocks.copperOre, 6, 2, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
@@ -38,20 +38,6 @@ public class OreGenerator implements IWorldGenerator {
                 default: //other dims
                     break;
             }
-        }
-        try {
-            Class e99dimension = Class.forName("gtclassic.GTDimensions");
-            Field dimensionType = e99dimension.getDeclaredField("toxicDimensionType");
-            if (world.provider == (WorldProvider)dimensionType.get(null)) {
-                runGenerator(SuperTechBlocks.leadOre, 8, 4, 12, 60, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.rubyOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.sapphireOre, 6, 2, 0, 40, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.bauxiteOre, 14, 2, 30, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.copperOre, 10, 3, 40, 75, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-                runGenerator(SuperTechBlocks.copperOre, 6, 2, 0, 20, BlockMatcher.forBlock(Blocks.STONE), world, rngsus, chunkX, chunkZ);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
     }

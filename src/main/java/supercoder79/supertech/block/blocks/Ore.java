@@ -110,7 +110,7 @@ public class Ore extends BasicBlock {
         }
     }
 
-    //TODO: add state based loot drops
+    //TODO: add state based exp drops
     public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune) {
         return 0;
     }
