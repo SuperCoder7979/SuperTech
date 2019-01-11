@@ -8,6 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
+import supercoder79.supertech.api.recipe.MachineRecipe;
 import supercoder79.supertech.api.recipe.RecipeList;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class TileEntityElectrolyzer extends TileEntityMachine {
     public int progress = 0;
     public int maxProgress = 0;
+    public int energyUsed = 0;
     public TileEntityGenerator generator = null;
     public NonNullList<ItemStack> recipeStacks = NonNullList.withSize(5, ItemStack.EMPTY);
 
@@ -27,6 +29,7 @@ public class TileEntityElectrolyzer extends TileEntityMachine {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound = super.writeToNBT(compound);
         compound.setInteger("progress", progress);
+        compound.setInteger("energyUsed", energyUsed);
         compound.setInteger("maxProgress", maxProgress);
         saveAllItems(compound, recipeStacks, true);
         return compound;
@@ -37,6 +40,7 @@ public class TileEntityElectrolyzer extends TileEntityMachine {
         super.readFromNBT(compound);
         progress = compound.getInteger("progress");
         maxProgress = compound.getInteger("maxProgress");
+        energyUsed = compound.getInteger("energyUsed");
         loadAllItems(compound, recipeStacks);
 
     }
@@ -52,15 +56,17 @@ public class TileEntityElectrolyzer extends TileEntityMachine {
             }
             if (progress <= 0) {
                 Item item = getStackInSlot(0).getItem();
-                NonNullList<ItemStack> stacks = RecipeList.electrolyzerRecipes.get(item);
-                if (stacks != null) {
+                if (RecipeList.electrolyzerRecipes.containsKey(item)) {
+                    MachineRecipe recipe = RecipeList.electrolyzerRecipes.get(item);
+                    NonNullList<ItemStack> stacks = recipe.stacks;
+                    energyUsed = recipe.energy;
                     recipeStacks = stacks;
                     if (getStackInSlot(0).getCount() >= recipeStacks.get(0).getCount()) {
                         //oof
                         if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem() && getStackInSlot(3).getItem() == recipeStacks.get(3).getItem() && getStackInSlot(4).getItem() == recipeStacks.get(4).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty() && getStackInSlot(3).isEmpty() && getStackInSlot(4).isEmpty())) {
                             if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize() && getStackInSlot(3).getCount() + recipeStacks.get(3).getCount() <= getStackInSlot(3).getMaxStackSize()&& getStackInSlot(4).getCount() + recipeStacks.get(4).getCount() <= getStackInSlot(4).getMaxStackSize()) {
-                                progress = 200;
-                                maxProgress = 200;
+                                progress = recipe.ticks;
+                                maxProgress = recipe.ticks;
                                 decrStackSize(0, recipeStacks.get(0).getCount());
                                 markDirty();
                             }
@@ -68,15 +74,16 @@ public class TileEntityElectrolyzer extends TileEntityMachine {
                     }
                 }
             } else {
-                if (this.energy > 2) {
+                if (this.energy >= energyUsed) {
                     progress--;
-                    this.energy-=2;
+                    this.energy-=energyUsed;
                 }
 
                 if (progress <= 0) {
                     progress = 0;
                     if (maxProgress > 0) {
                         maxProgress = 0;
+                        energyUsed = 0;
                         if (!(recipeStacks == null)) {
                             setInventorySlotContents(1, new ItemStack(recipeStacks.get(1).getItem(), recipeStacks.get(1).getCount() + getStackInSlot(1).getCount()));
                             setInventorySlotContents(2, new ItemStack(recipeStacks.get(2).getItem(), recipeStacks.get(2).getCount() + getStackInSlot(2).getCount()));

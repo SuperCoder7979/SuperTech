@@ -12,6 +12,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 import supercoder79.supertech.api.material.Materials;
+import supercoder79.supertech.api.recipe.MachineRecipe;
 import supercoder79.supertech.api.recipe.RecipeList;
 import supercoder79.supertech.gui.generator.TileEntityGenerator;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class TileEntityMacerator extends TileEntityMachine {
     public int progress = 0;
     public int maxProgress = 0;
+    public int energyUsed = 0;
     public TileEntityGenerator generator = null;
     public NonNullList<ItemStack> recipeStacks = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
 
@@ -33,6 +35,7 @@ public class TileEntityMacerator extends TileEntityMachine {
         compound = super.writeToNBT(compound);
         compound.setInteger("progress", progress);
         compound.setInteger("maxProgress", maxProgress);
+        compound.setInteger("maxProgress", maxProgress);
         saveAllItems(compound, recipeStacks, true);
         return compound;
     }
@@ -42,6 +45,7 @@ public class TileEntityMacerator extends TileEntityMachine {
         super.readFromNBT(compound);
         progress = compound.getInteger("progress");
         maxProgress = compound.getInteger("maxProgress");
+        energyUsed = compound.getInteger("energyUsed");
         loadAllItems(compound, recipeStacks);
 
     }
@@ -57,14 +61,17 @@ public class TileEntityMacerator extends TileEntityMachine {
             }
             if (progress <= 0) {
                 Item item = getStackInSlot(0).getItem();
-                NonNullList<ItemStack> stacks = RecipeList.maceratorRecipes.get(item);
-                if (stacks != null) {
+
+                if (RecipeList.maceratorRecipes.containsKey(item)) {
+                    MachineRecipe recipe = RecipeList.maceratorRecipes.get(item);
+                    NonNullList<ItemStack> stacks = recipe.stacks;
+                    energyUsed = recipe.energy;
                     recipeStacks = stacks;
                     if (getStackInSlot(0).getCount() >= recipeStacks.get(0).getCount()) {
                         if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
                             if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize()) {
-                                progress = 100;
-                                maxProgress = 100;
+                                progress = recipe.ticks;
+                                maxProgress = recipe.ticks;
                                 decrStackSize(0, recipeStacks.get(0).getCount());
                                 markDirty();
                             }
@@ -72,15 +79,16 @@ public class TileEntityMacerator extends TileEntityMachine {
                     }
                 }
             } else {
-                if (this.energy > 2) {
+                if (this.energy > energyUsed) {
                     progress--;
-                    this.energy-=2;
+                    this.energy-=energyUsed;
                 }
 
                 if (progress <= 0) {
                     progress = 0;
                     if (maxProgress > 0) {
                         maxProgress = 0;
+                        energyUsed = 0;
                         if (!(recipeStacks == null)) {
                             setInventorySlotContents(1, new ItemStack(recipeStacks.get(1).getItem(), recipeStacks.get(1).getCount() + getStackInSlot(1).getCount()));
                             setInventorySlotContents(2, new ItemStack(recipeStacks.get(2).getItem(), recipeStacks.get(2).getCount() + getStackInSlot(2).getCount()));

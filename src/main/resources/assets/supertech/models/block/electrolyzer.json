@@ -6,7 +6,7 @@
     "up": "supertech:blocks/machine_side",
     "east": "supertech:blocks/machine_side",
     "west": "supertech:blocks/machine_side",
-    "north": "supertech:blocks/macerator",
+    "north": "supertech:blocks/electrolyzer_side",
     "south": "supertech:blocks/machine_side"
   }
 }

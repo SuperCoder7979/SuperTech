@@ -1,5 +1,6 @@
 package supercoder79.supertech.api.material;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
@@ -35,5 +36,7 @@ public class Materials {
     static {
         Lead.setSmelting(Lead.getDust(1), Lead.getIngot(1));
         Copper.setSmelting(Copper.getDust(1), Copper.getIngot(1));
+        Iron.setSmelting(Iron.getDust(1), new ItemStack(Items.IRON_INGOT, 1));
+        Gold.setSmelting(Gold.getDust(1), new ItemStack(Items.GOLD_INGOT, 1));
     }
 }

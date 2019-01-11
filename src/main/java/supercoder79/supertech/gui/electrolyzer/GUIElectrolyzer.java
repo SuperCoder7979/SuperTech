@@ -28,7 +28,7 @@ public class GUIElectrolyzer extends MachineGUI {
         drawTexturedModalRect(x + 9, y + 66 - amt, 176, 58 - amt, 12, amt);
 
         if (te.getField(2) > 0) {
-            int height = (int)(((double)(200 - te.getField(1))/(double)te.getField(2))*10);
+            int height = (int)(((double)(te.getField(2) - te.getField(1))/(double)te.getField(2))*10);
             drawTexturedModalRect(x + 73, y + 44 - height, 176, 10 - height, 30, height);
         }
     }

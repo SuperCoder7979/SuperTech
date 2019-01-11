@@ -9,9 +9,9 @@ import supercoder79.supertech.api.recipe.RecipeList;
 
 public class ModRecipeLoader {
     public static void run() {
-        RecipeList.addMaceratorRecipe(Item.getItemFromBlock(Blocks.IRON_ORE), new ItemStack(Item.getItemFromBlock(Blocks.IRON_ORE), 1), new ItemStack(Materials.Iron.dust, 2), new ItemStack(Materials.Gold.dustTiny, 1));
-        RecipeList.addMaceratorRecipe(Item.getItemFromBlock(Blocks.GOLD_ORE), new ItemStack(Item.getItemFromBlock(Blocks.GOLD_ORE), 1), new ItemStack(Materials.Gold.dust, 2), new ItemStack(Materials.Iron.dustTiny, 1));
-        RecipeList.addElectrolyzerRecipe(Materials.Tetrahedrite.dust, Materials.Tetrahedrite.getDust(4), Materials.Copper.getDust(1), Materials.Iron.getDust(1), Materials.Gold.getDust(1), Materials.Lead.getDust(1));
+        RecipeList.addMaceratorRecipe(16, 200, Item.getItemFromBlock(Blocks.IRON_ORE), new ItemStack(Item.getItemFromBlock(Blocks.IRON_ORE), 1), new ItemStack(Materials.Iron.dust, 2), new ItemStack(Materials.Gold.dustTiny, 1));
+        RecipeList.addMaceratorRecipe(16, 200, Item.getItemFromBlock(Blocks.GOLD_ORE), new ItemStack(Item.getItemFromBlock(Blocks.GOLD_ORE), 1), new ItemStack(Materials.Gold.dust, 2), new ItemStack(Materials.Iron.dustTiny, 1));
+        RecipeList.addElectrolyzerRecipe(30, 80, Materials.Tetrahedrite.dust, Materials.Tetrahedrite.getDust(4), Materials.Copper.getDust(1), Materials.Iron.getDust(1), ItemStack.EMPTY, ItemStack.EMPTY);
         for(Material material : Materials.materialRegistry) {
             switch (material.getFlags()) {
                 case 1:
@@ -19,10 +19,10 @@ public class ModRecipeLoader {
                 case 2:
                     break;
                 case 3:
-                    RecipeList.addMaceratorRecipe(material.ingot, material.getIngot(1),  material.getDust(1), ItemStack.EMPTY);
+                    RecipeList.addMaceratorRecipe(8, 80, material.ingot, material.getIngot(1),  material.getDust(1), ItemStack.EMPTY);
                     break;
                 case 5:
-                    RecipeList.addMaceratorRecipe(material.gem, material.getGem(1),  material.getDust(1), ItemStack.EMPTY);
+                    RecipeList.addMaceratorRecipe(8, 80, material.gem, material.getGem(1),  material.getDust(1), ItemStack.EMPTY);
                     break;
             }
         }
