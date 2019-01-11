@@ -19,6 +19,6 @@ public class DebugScissors extends BasicItem {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        tooltip.add("Click any machine to get it's information, under the threat of being stabbed....");
+        tooltip.add("Click any machine to get it's information. Not for use by children!");
     }
 }

@@ -51,20 +51,23 @@ public class TileEntityMacerator extends TileEntityMachine {
         super.update();
         if (!this.world.isRemote) {
             if (this.generator != null) {
-                this.energy += extractEnergy(generator, 32);
+                if (this.maxEnergy >= this.energy+32) {
+                    this.energy += generator.extractEnergy(generator, 32);
+                }
             }
-            //TODO: recipe maps
             if (progress <= 0) {
                 Item item = getStackInSlot(0).getItem();
                 NonNullList<ItemStack> stacks = RecipeList.maceratorRecipes.get(item);
                 if (stacks != null) {
                     recipeStacks = stacks;
-                    if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
-                        if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize()) {
-                            progress = 100;
-                            maxProgress = 100;
-                            decrStackSize(0, recipeStacks.get(0).getCount());
-                            markDirty();
+                    if (getStackInSlot(0).getCount() >= recipeStacks.get(0).getCount()) {
+                        if ((getStackInSlot(1).getItem() == recipeStacks.get(1).getItem() && getStackInSlot(2).getItem() == recipeStacks.get(2).getItem()) || (getStackInSlot(1).isEmpty() && getStackInSlot(2).isEmpty())) {
+                            if (getStackInSlot(1).getCount() + recipeStacks.get(1).getCount() <= getStackInSlot(1).getMaxStackSize() && getStackInSlot(2).getCount() + recipeStacks.get(2).getCount() <= getStackInSlot(2).getMaxStackSize()) {
+                                progress = 100;
+                                maxProgress = 100;
+                                decrStackSize(0, recipeStacks.get(0).getCount());
+                                markDirty();
+                            }
                         }
                     }
                 }
@@ -81,7 +84,7 @@ public class TileEntityMacerator extends TileEntityMachine {
                         if (!(recipeStacks == null)) {
                             setInventorySlotContents(1, new ItemStack(recipeStacks.get(1).getItem(), recipeStacks.get(1).getCount() + getStackInSlot(1).getCount()));
                             setInventorySlotContents(2, new ItemStack(recipeStacks.get(2).getItem(), recipeStacks.get(2).getCount() + getStackInSlot(2).getCount()));
-                            recipeStacks = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+                            recipeStacks = NonNullList.withSize(3, ItemStack.EMPTY);
                         }
                     }
                 }

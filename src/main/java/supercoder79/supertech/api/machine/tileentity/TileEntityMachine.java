@@ -157,13 +157,11 @@ public class TileEntityMachine extends TileEntity implements IInventory, ITickab
     }
 
     @Override
-    public int extractEnergy(TileEntityMachine machine, int amt) {
-        if (machine.energy >= amt) {
-            if (this.energy + amt <= this.maxEnergy) {
-                machine.energy-=amt;
-                return amt;
-            }
-        }
-        return 0;
+    public int getMaxEnergy(TileEntityMachine machine) {
+        return machine.maxEnergy;
+    }
+    @Override
+    public int getEnergy(TileEntityMachine machine) {
+        return machine.energy;
     }
 }

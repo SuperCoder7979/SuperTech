@@ -25,11 +25,11 @@ public class GUIElectrolyzer extends MachineGUI {
 
         int amt = (int)(((double)te.getField(0)/(double)te.maxEnergy)*48);
         if (amt > 48) amt = 48;
-        drawTexturedModalRect(x + 9, y + 65 - amt, 176, 57 - amt, 12, amt);
+        drawTexturedModalRect(x + 9, y + 66 - amt, 176, 58 - amt, 12, amt);
 
         if (te.getField(2) > 0) {
-            int length = (int)(((double)te.getField(1)/(double)te.getField(2))*20);
-            drawTexturedModalRect(x + 69, y + 24, 176, 0, 20 - length, 18);
+            int height = (int)(((double)(200 - te.getField(1))/(double)te.getField(2))*10);
+            drawTexturedModalRect(x + 73, y + 44 - height, 176, 10 - height, 30, height);
         }
     }
 }
