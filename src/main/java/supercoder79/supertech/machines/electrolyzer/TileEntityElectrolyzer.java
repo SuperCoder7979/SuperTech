@@ -1,4 +1,4 @@
-package supercoder79.supertech.gui.electrolyzer;
+package supercoder79.supertech.machines.electrolyzer;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 import supercoder79.supertech.api.recipe.MachineRecipe;
 import supercoder79.supertech.api.recipe.RecipeList;
-import supercoder79.supertech.gui.generator.TileEntityGenerator;
+import supercoder79.supertech.machines.generator.TileEntityGenerator;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,7 @@ public class TileEntityElectrolyzer extends TileEntityMachine {
         if (!this.world.isRemote) {
             if (this.generator != null) {
                 if (this.maxEnergy >= this.energy+32) {
-                    this.energy += generator.extractEnergy(generator, 32);
+                    this.energy += generator.extractEnergy(32);
                 }
             }
             if (progress <= 0) {

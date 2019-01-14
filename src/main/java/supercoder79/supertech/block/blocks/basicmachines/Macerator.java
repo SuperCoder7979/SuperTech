@@ -16,8 +16,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.api.blocks.BlockRotatable;
-import supercoder79.supertech.gui.GUIHandler;
-import supercoder79.supertech.gui.macerator.TileEntityMacerator;
+import supercoder79.supertech.machines.GUIHandler;
+import supercoder79.supertech.machines.macerator.TileEntityMacerator;
 import supercoder79.supertech.item.SuperTechItems;
 
 import javax.annotation.Nullable;

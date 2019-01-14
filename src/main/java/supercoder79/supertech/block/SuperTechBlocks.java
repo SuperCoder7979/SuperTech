@@ -29,6 +29,9 @@ public class SuperTechBlocks {
     @GameRegistry.ObjectHolder("supertech:electrolyzer")
     public static Electrolyzer electrolyzer = new Electrolyzer();
 
+    @GameRegistry.ObjectHolder("supertech:wire")
+    public static Wire wire = new Wire();
+
     @GameRegistry.ObjectHolder("supertech:ore_lead")
     public static Ore leadOre = new Ore("ore_lead", OreLootTable.leadTable);
 
@@ -51,7 +54,7 @@ public class SuperTechBlocks {
         eFurnace.initModel();
         macerator.initModel();
         electrolyzer.initModel();
-//        ore.initModel();
+        wire.initModel();
         for (Ore o: ores) {
             o.initModel();
         }

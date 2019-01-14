@@ -1,35 +1,23 @@
-package supercoder79.supertech.gui.electrolyzer;
+package supercoder79.supertech.machines.macerator;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import supercoder79.supertech.api.machine.conainer.MachineContainer;
-import supercoder79.supertech.gui.macerator.TileEntityMacerator;
 
-public class ContainerElectrolyzer extends MachineContainer {
-    TileEntityElectrolyzer te;
-    public ContainerElectrolyzer(InventoryPlayer playerInv, TileEntityElectrolyzer tileentity) {
+public class ContainerMacerator extends MachineContainer {
+    TileEntityMacerator te;
+    public ContainerMacerator(InventoryPlayer playerInv, TileEntityMacerator tileentity) {
         super(playerInv, tileentity);
         te = tileentity;
-        addSlotToContainer(new Slot(tileentity, 0, 80, 46) {
+        addSlotToContainer(new Slot(tileentity, 0, 44, 25) {
             @Override
             public void onSlotChanged() {
                 tileentity.markDirty();
             }
         });
-        addSlotToContainer(new Slot(tileentity, 1, 50, 16) {
-            @Override
-            public void onSlotChanged() {
-                tileentity.markDirty();
-            }
-
-            @Override
-            public boolean isItemValid(ItemStack stack) {
-                return false;
-            }
-        });
-        addSlotToContainer(new Slot(tileentity, 2, 70, 16) {
+        addSlotToContainer(new Slot(tileentity, 1, 98, 25) {
             @Override
             public void onSlotChanged() {
                 tileentity.markDirty();
@@ -40,18 +28,7 @@ public class ContainerElectrolyzer extends MachineContainer {
                 return false;
             }
         });
-        addSlotToContainer(new Slot(tileentity, 3, 90, 16) {
-            @Override
-            public void onSlotChanged() {
-                tileentity.markDirty();
-            }
-
-            @Override
-            public boolean isItemValid(ItemStack stack) {
-                return false;
-            }
-        });
-        addSlotToContainer(new Slot(tileentity, 4, 110, 16) {
+        addSlotToContainer(new Slot(tileentity, 2, 116, 25) {
             @Override
             public void onSlotChanged() {
                 tileentity.markDirty();

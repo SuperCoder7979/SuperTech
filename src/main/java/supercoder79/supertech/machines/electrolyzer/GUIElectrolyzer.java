@@ -1,4 +1,4 @@
-package supercoder79.supertech.gui.macerator;
+package supercoder79.supertech.machines.electrolyzer;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -6,12 +6,11 @@ import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.api.machine.gui.MachineGUI;
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 
-public class GUIMacerator extends MachineGUI {
-    TileEntityMacerator te;
-    public GUIMacerator(Container container, InventoryPlayer playerInv, TileEntityMacerator tileEntity) {
-        super(container, playerInv, tileEntity, new ResourceLocation(SuperTech.MODID, "textures/gui/gui_macerator.png"), "Macerator");
+public class GUIElectrolyzer extends MachineGUI {
+    TileEntityElectrolyzer te;
+    public GUIElectrolyzer(Container container, InventoryPlayer playerInv, TileEntityElectrolyzer tileEntity) {
+        super(container, playerInv, tileEntity, new ResourceLocation(SuperTech.MODID, "textures/machines/gui_electrolyzer.png"), "Electrolyzer");
         te = tileEntity;
     }
     @Override
@@ -25,12 +24,11 @@ public class GUIMacerator extends MachineGUI {
 
         int amt = (int)(((double)te.getField(0)/(double)te.maxEnergy)*48);
         if (amt > 48) amt = 48;
-        drawTexturedModalRect(x + 9, y + 65 - amt, 176, 65 - amt, 12, amt);
+        drawTexturedModalRect(x + 9, y + 66 - amt, 176, 58 - amt, 12, amt);
 
         if (te.getField(2) > 0) {
-            int length = (int)(((double)te.getField(1)/(double)te.getField(2))*20);
-            drawTexturedModalRect(x + 69, y + 24, 176, 0, 20 - length, 18);
+            int height = (int)(((double)(te.getField(2) - te.getField(1))/(double)te.getField(2))*10);
+            drawTexturedModalRect(x + 73, y + 44 - height, 176, 10 - height, 30, height);
         }
-
     }
 }

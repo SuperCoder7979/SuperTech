@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "supertech:wire"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

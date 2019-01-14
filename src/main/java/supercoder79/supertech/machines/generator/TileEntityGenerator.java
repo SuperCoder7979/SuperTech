@@ -1,8 +1,7 @@
-package supercoder79.supertech.gui.generator;
+package supercoder79.supertech.machines.generator;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityFurnace;
-import net.minecraft.util.ITickable;
 import supercoder79.supertech.api.enet.IEnergyProvider;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
 
@@ -96,19 +95,14 @@ public class TileEntityGenerator extends TileEntityMachine implements IEnergyPro
         return 3;
     }
 
-
     @Override
-    public int extractEnergy(TileEntityMachine machine, int amt) {
-        if (machine.energy >= amt) {
+    public int extractEnergy(int amt) {
+        if (this.energy >= amt) {
             if (this.energy + amt <= this.maxEnergy) {
-                machine.energy-=amt;
+                this.energy-=amt;
                 return amt;
             }
         }
         return 0;
-    }
-    @Override
-    public int extractEnergy(int amt) {
-        return extractEnergy(this, amt);
     }
 }

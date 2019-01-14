@@ -1,6 +1,5 @@
 package supercoder79.supertech.block.blocks.basicmachines;
 
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
@@ -16,9 +15,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import supercoder79.supertech.SuperTech;
 import supercoder79.supertech.api.blocks.BlockRotatable;
-import supercoder79.supertech.gui.GUIHandler;
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
-import supercoder79.supertech.gui.generator.TileEntityGenerator;
+import supercoder79.supertech.machines.GUIHandler;
+import supercoder79.supertech.machines.generator.TileEntityGenerator;
 import supercoder79.supertech.item.SuperTechItems;
 
 import javax.annotation.Nullable;

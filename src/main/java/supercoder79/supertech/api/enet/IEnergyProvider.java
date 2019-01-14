@@ -1,8 +1,15 @@
 package supercoder79.supertech.api.enet;
 
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
-
+/**
+ * Inherited by any class that provides energy for the EnergyNetwork
+ * @author SuperCoder79
+ */
 public interface IEnergyProvider {
-    int extractEnergy(TileEntityMachine machine, int amt);
+
+    /**
+     *
+     * @param amt amount of energy to extract
+     * @return extracted energy
+     */
     int extractEnergy(int amt);
 }

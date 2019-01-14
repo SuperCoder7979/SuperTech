@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import supercoder79.supertech.SuperTech;
+import supercoder79.supertech.api.machine.tileentity.TileEntityWire;
 import supercoder79.supertech.api.material.Material;
 import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.worldgen.OreGenerator;
@@ -21,9 +22,9 @@ import supercoder79.supertech.block.blocks.basicmachines.EFurnace;
 import supercoder79.supertech.block.blocks.basicmachines.Electrolyzer;
 import supercoder79.supertech.block.blocks.basicmachines.Generator;
 import supercoder79.supertech.block.blocks.basicmachines.Macerator;
-import supercoder79.supertech.gui.electrolyzer.TileEntityElectrolyzer;
-import supercoder79.supertech.gui.generator.TileEntityGenerator;
-import supercoder79.supertech.gui.macerator.TileEntityMacerator;
+import supercoder79.supertech.machines.electrolyzer.TileEntityElectrolyzer;
+import supercoder79.supertech.machines.generator.TileEntityGenerator;
+import supercoder79.supertech.machines.macerator.TileEntityMacerator;
 import supercoder79.supertech.item.items.DebugScissors;
 import supercoder79.supertech.item.items.STCoin;
 import supercoder79.supertech.loaders.CraftingRecipeLoader;
@@ -43,6 +44,7 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(TileEntityGenerator.class, new ModelResourceLocation(SuperTech.MODID + ":tegenerator"));
         GameRegistry.registerTileEntity(TileEntityMacerator.class, new ModelResourceLocation(SuperTech.MODID + ":temacerator"));
         GameRegistry.registerTileEntity(TileEntityElectrolyzer.class, new ModelResourceLocation(SuperTech.MODID + ":teelectrolyzer"));
+        GameRegistry.registerTileEntity(TileEntityWire.class, new ModelResourceLocation(SuperTech.MODID + ":tewire"));
         OreDictLoader.run();
         CraftingRecipeLoader.run();
         SmeltingRecipeLoader.run();
@@ -59,6 +61,7 @@ public class CommonProxy {
         event.getRegistry().register(new EFurnace());
         event.getRegistry().register(new Macerator());
         event.getRegistry().register(new Electrolyzer());
+        event.getRegistry().register(new Wire());
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(o);
         }
@@ -71,6 +74,7 @@ public class CommonProxy {
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.eFurnace).setRegistryName(SuperTechBlocks.eFurnace.getRegistryName()));
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.macerator).setRegistryName(SuperTechBlocks.macerator.getRegistryName()));
         event.getRegistry().register(new ItemBlock(SuperTechBlocks.electrolyzer).setRegistryName(SuperTechBlocks.electrolyzer.getRegistryName()));
+        event.getRegistry().register(new ItemBlock(SuperTechBlocks.wire).setRegistryName(SuperTechBlocks.wire.getRegistryName()));
         for (Ore o: SuperTechBlocks.ores) {
             event.getRegistry().register(new ItemBlock(o).setRegistryName(o.getRegistryName()));
         }

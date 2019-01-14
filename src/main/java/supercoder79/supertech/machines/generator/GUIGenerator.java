@@ -1,4 +1,4 @@
-package supercoder79.supertech.gui.generator;
+package supercoder79.supertech.machines.generator;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -10,7 +10,7 @@ import supercoder79.supertech.api.machine.gui.MachineGUI;
 public class GUIGenerator extends MachineGUI {
     TileEntityGenerator generator;
     public GUIGenerator(Container container, InventoryPlayer playerInv, TileEntityGenerator tileEntity) {
-        super(container, playerInv, tileEntity,  new ResourceLocation(SuperTech.MODID, "textures/gui/gui_generator.png"), "Generator");
+        super(container, playerInv, tileEntity,  new ResourceLocation(SuperTech.MODID, "textures/machines/gui_generator.png"), "Generator");
         generator = tileEntity;
 
     }

@@ -1,22 +1,19 @@
-package supercoder79.supertech.gui;
+package supercoder79.supertech.machines;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import supercoder79.supertech.api.machine.conainer.MachineContainer;
-import supercoder79.supertech.api.machine.gui.MachineGUI;
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
-import supercoder79.supertech.gui.electrolyzer.ContainerElectrolyzer;
-import supercoder79.supertech.gui.electrolyzer.GUIElectrolyzer;
-import supercoder79.supertech.gui.electrolyzer.TileEntityElectrolyzer;
-import supercoder79.supertech.gui.generator.ContainerGenerator;
-import supercoder79.supertech.gui.generator.GUIGenerator;
-import supercoder79.supertech.gui.generator.TileEntityGenerator;
-import supercoder79.supertech.gui.macerator.ContainerMacerator;
-import supercoder79.supertech.gui.macerator.GUIMacerator;
-import supercoder79.supertech.gui.macerator.TileEntityMacerator;
+import supercoder79.supertech.machines.electrolyzer.ContainerElectrolyzer;
+import supercoder79.supertech.machines.electrolyzer.GUIElectrolyzer;
+import supercoder79.supertech.machines.electrolyzer.TileEntityElectrolyzer;
+import supercoder79.supertech.machines.generator.ContainerGenerator;
+import supercoder79.supertech.machines.generator.GUIGenerator;
+import supercoder79.supertech.machines.generator.TileEntityGenerator;
+import supercoder79.supertech.machines.macerator.ContainerMacerator;
+import supercoder79.supertech.machines.macerator.GUIMacerator;
+import supercoder79.supertech.machines.macerator.TileEntityMacerator;
 
 import javax.annotation.Nullable;
 

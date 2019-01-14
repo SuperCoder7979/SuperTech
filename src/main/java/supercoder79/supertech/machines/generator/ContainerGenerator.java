@@ -1,4 +1,4 @@
-package supercoder79.supertech.gui.generator;
+package supercoder79.supertech.machines.generator;
 
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IContainerListener;

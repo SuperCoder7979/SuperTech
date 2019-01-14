@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import org.apache.logging.log4j.Logger;
-import supercoder79.supertech.gui.GUIHandler;
+import supercoder79.supertech.machines.GUIHandler;
 import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.random.SuperTechCreativeTab;
 import supercoder79.supertech.block.SuperTechBlocks;

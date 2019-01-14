@@ -1,23 +1,18 @@
-package supercoder79.supertech.gui.macerator;
+package supercoder79.supertech.machines.macerator;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
-import supercoder79.supertech.api.material.Materials;
 import supercoder79.supertech.api.recipe.MachineRecipe;
 import supercoder79.supertech.api.recipe.RecipeList;
-import supercoder79.supertech.gui.generator.TileEntityGenerator;
+import supercoder79.supertech.machines.generator.TileEntityGenerator;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TileEntityMacerator extends TileEntityMachine {
     public int progress = 0;
@@ -56,7 +51,7 @@ public class TileEntityMacerator extends TileEntityMachine {
         if (!this.world.isRemote) {
             if (this.generator != null) {
                 if (this.maxEnergy >= this.energy+32) {
-                    this.energy += generator.extractEnergy(generator, 32);
+                    this.energy += generator.extractEnergy(32);
                 }
             }
             if (progress <= 0) {

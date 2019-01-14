@@ -1,8 +1,17 @@
 package supercoder79.supertech.api.enet;
 
-import supercoder79.supertech.api.machine.tileentity.TileEntityMachine;
-
+/**
+ * Inherited by any class that can store and use energy
+ * @author SuperCoder79
+ */
 public interface IEnergyMachine {
-    int getEnergy(TileEntityMachine machine);
-    int getMaxEnergy(TileEntityMachine machine);
+    /**
+     * @return the amount of energy contained
+     */
+    int getEnergy();
+
+    /**
+     * @return the maximum amount of energy able to e stored
+     */
+    int getMaxEnergy();
 }
