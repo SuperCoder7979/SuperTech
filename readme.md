@@ -9,10 +9,11 @@ If you want to contribute to the development of SuperTech, feel free to fork and
 Current feature checklist
 
 - [x] Ores
-- [ ] GUIs
-- [ ] Tile Entities
-- [ ] *shudders* Electric Network (e-net)
-- [ ] Recipes
+- [x] GUIs
+- [x] Tile Entities
+- [x] *shudders* Electric Network (e-net)
+- [x] Recipes
 - [ ] Compat with GT-Classic and other mods
+- [ ] Add actual content
 
 These features are coming soon, in order of the list.
